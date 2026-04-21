@@ -11,6 +11,24 @@ import {
   ShieldAlert, FileCheck, SearchCheck, ShieldCheck, ChevronRight, ChevronDown
 } from 'lucide-react';
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } }
+};
+
 const divisions = [
   {
     id: "01",
@@ -103,19 +121,23 @@ const divisions = [
 const DivisionAccordion = ({ div, isOpen, onToggle }) => {
   return (
     <motion.div 
-      initial={false}
+      variants={fadeInUp}
+      whileHover={!isOpen ? { y: -5, scale: 1.01 } : {}}
       animate={{ backgroundColor: isOpen ? "#FFFFFF" : "#E8DFD5" }}
-      className={`border border-gray-200 rounded-3xl overflow-hidden transition-shadow duration-300 ${isOpen ? 'shadow-[0_8px_30px_rgb(0,0,0,0.08)] z-10 relative' : 'shadow-sm hover:shadow-md'}`}
+      className={`border border-gray-200 rounded-3xl overflow-hidden transition-shadow duration-300 ${isOpen ? 'shadow-[0_10px_40px_rgb(0,0,0,0.12)] z-10 relative border-cta/30' : 'shadow-sm hover:shadow-xl hover:border-cta/50 cursor-pointer'}`}
     >
       <button 
         onClick={onToggle}
-        className="w-full px-6 py-6 md:px-10 md:py-8 flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cta text-left cursor-pointer"
+        className="w-full px-6 py-6 md:px-10 md:py-8 flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cta text-left"
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-6">
-          <div className={`shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-300 shadow-sm ${isOpen ? 'bg-primary text-bgmain' : 'bg-white text-primary'}`}>
+          <motion.div 
+            animate={{ rotate: isOpen ? 5 : 0 }}
+            className={`shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-500 shadow-sm ${isOpen ? 'bg-primary text-bgmain' : 'bg-white text-primary'}`}
+          >
             {div.icon}
-          </div>
+          </motion.div>
           <div>
             <span className="text-cta font-bold tracking-widest text-xs uppercase mb-1 block">DIVISIÓN {div.id}</span>
             <h2 className={`text-2xl md:text-3xl font-bold transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-gray-800'}`}>
@@ -124,11 +146,11 @@ const DivisionAccordion = ({ div, isOpen, onToggle }) => {
           </div>
         </div>
         <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100 ml-4"
+          animate={{ rotate: isOpen ? 180 : 0, backgroundColor: isOpen ? '#A38A66' : '#FFFFFF' }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className={`shrink-0 w-12 h-12 rounded-full flex items-center justify-center shadow-sm border border-gray-100 ml-4`}
         >
-          <ChevronDown className={`w-6 h-6 transition-colors duration-300 ${isOpen ? 'text-cta' : 'text-primary'}`} />
+          <ChevronDown className={`w-6 h-6 transition-colors duration-300 ${isOpen ? 'text-white' : 'text-primary'}`} />
         </motion.div>
       </button>
 
@@ -143,29 +165,40 @@ const DivisionAccordion = ({ div, isOpen, onToggle }) => {
               open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 }
             }}
-            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <div className="px-6 pb-8 md:px-10 md:pb-10 pt-2 border-t border-gray-100">
-              <p className="text-body leading-relaxed text-lg mb-10 max-w-4xl mt-6">
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-body leading-relaxed text-lg mb-10 max-w-4xl mt-6"
+              >
                 {div.desc}
-              </p>
+              </motion.p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              >
                 {div.items.map((item, itemIdx) => (
-                  <div 
+                  <motion.div 
+                    variants={scaleIn}
                     key={itemIdx} 
-                    className="flex gap-5 p-6 rounded-2xl bg-[#F9F8F6] border border-transparent hover:border-cta/30 transition-all duration-300 group"
+                    className="flex gap-5 p-6 rounded-2xl bg-[#F9F8F6] border border-transparent hover:border-cta/30 hover:bg-white transition-all duration-300 group hover:shadow-md"
                   >
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-sm group-hover:text-bgmain group-hover:bg-primary transition-colors duration-300">
+                    <div className="shrink-0 w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-sm group-hover:text-bgmain group-hover:bg-primary transition-all duration-300 group-hover:scale-110">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-primary mb-2 leading-tight">{item.title}</h3>
+                      <h3 className="text-lg font-bold text-primary mb-2 leading-tight group-hover:text-cta transition-colors">{item.title}</h3>
                       <p className="text-body text-sm leading-relaxed">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -180,52 +213,63 @@ const Servicios = () => {
   return (
     <div className="bg-bgmain min-h-screen pb-24">
       {/* Header Section */}
-      <section className="bg-primary pt-24 pb-20 px-6 text-center border-b-8 border-cta relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
+      <section className="bg-primary pt-32 pb-24 px-6 text-center border-b-[6px] border-cta relative overflow-hidden">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-cta/10 blur-[120px]"
+        />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
           className="container mx-auto max-w-4xl relative z-10"
         >
-          <span className="text-cta font-bold tracking-widest uppercase text-sm mb-4 block">Nuestros Enfoques de Soluciones</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain mb-6 leading-tight">
-            Su Aliado Estratégico en Gestión y Defensa
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            Transformamos la complejidad legal y tributaria en tranquilidad y crecimiento para su patrimonio.
-          </p>
+          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cta font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">Nuestros Enfoques de Soluciones</motion.span>
+          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain mb-6 leading-tight">
+            Su Aliado Estratégico en <br/> <span className="text-cta">Gestión y Defensa</span>
+          </motion.h1>
+          <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            Transformamos la complejidad legal y tributaria en tranquilidad y crecimiento sostenido para su patrimonio corporativo.
+          </motion.p>
         </motion.div>
       </section>
 
       {/* Accordion List Section */}
       <section className="container mx-auto px-6 mt-16 max-w-5xl">
-        <div className="space-y-4">
-          {divisions.map((div, idx) => (
-            <motion.div
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="space-y-6"
+        >
+          {divisions.map((div) => (
+            <DivisionAccordion 
               key={div.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <DivisionAccordion 
-                div={div} 
-                isOpen={expandedId === div.id} 
-                onToggle={() => setExpandedId(expandedId === div.id ? false : div.id)} 
-              />
-            </motion.div>
+              div={div} 
+              isOpen={expandedId === div.id} 
+              onToggle={() => setExpandedId(expandedId === div.id ? false : div.id)} 
+            />
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
       <section className="container mx-auto px-6 mt-32 max-w-5xl text-center">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-primary rounded-3xl p-12 md:p-20 relative overflow-hidden shadow-2xl"
+          transition={{ duration: 0.8 }}
+          className="bg-primary rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden shadow-2xl"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cta/20 rounded-full blur-3xl"></div>
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 5, repeat: Infinity }}
+            className="absolute -top-32 -right-32 w-96 h-96 bg-cta rounded-full blur-[100px]"
+          />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/30 rounded-full blur-3xl"></div>
           
           <div className="relative z-10">
@@ -235,12 +279,14 @@ const Servicios = () => {
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
               Ahora que conoce nuestras especialidades, dé el siguiente paso con el respaldo de un equipo técnico de alto nivel. Estamos listos para brindarle la seguridad jurídica y contable que su gestión requiere.
             </p>
-            <NavLink 
-              to="/contacto" 
-              className="inline-flex items-center gap-2 bg-cta hover:bg-[#A38A66] text-bgmain font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:ring-4 focus:ring-cta/50 outline-none"
-            >
-              SOLICITAR ASESORÍA <ChevronRight className="w-6 h-6" />
-            </NavLink>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <NavLink 
+                to="/contacto" 
+                className="inline-flex items-center gap-2 bg-cta hover:bg-[#A38A66] text-bgmain font-bold py-5 px-10 rounded-2xl shadow-xl hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] transition-all duration-300 focus:ring-4 focus:ring-cta/50 outline-none"
+              >
+                SOLICITAR ASESORÍA <ChevronRight className="w-6 h-6" />
+              </NavLink>
+            </motion.div>
           </div>
         </motion.div>
       </section>

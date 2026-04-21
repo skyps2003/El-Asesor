@@ -4,6 +4,19 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoImg from '../assets/Logo.png';
 
+const staggerNav = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+  }
+};
+
+const itemNav = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+};
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,46 +47,64 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <NavLink to="/" className="flex items-center gap-3 group">
-          <img 
+          <motion.img 
+            initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, type: "spring" }}
             src={logoImg} 
             alt="El Asesor Logo" 
-            className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" 
+            className="h-12 w-auto transition-transform duration-300 group-hover:scale-110" 
           />
-          <span className="text-2xl font-bold tracking-tight">El Asesor</span>
+          <motion.span 
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-2xl font-bold tracking-tight group-hover:text-cta transition-colors duration-300"
+          >
+            El Asesor
+          </motion.span>
         </NavLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 font-medium items-center">
+        <motion.nav 
+          variants={staggerNav}
+          initial="hidden"
+          animate="visible"
+          className="hidden md:flex gap-8 font-medium items-center"
+        >
           {navLinks.map((link) => (
-            <NavLink 
-              key={link.name}
-              to={link.path}
-              className={({ isActive }) => 
-                `relative px-2 py-1 transition-colors duration-300 hover:text-cta ${
-                  isActive ? 'text-cta font-semibold' : ''
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {link.name}
-                  {isActive && (
-                    <motion.div 
-                      layoutId="underline" 
-                      className="absolute left-0 bottom-0 w-full h-0.5 bg-cta" 
-                    />
-                  )}
-                </>
-              )}
-            </NavLink>
+            <motion.div key={link.name} variants={itemNav}>
+              <NavLink 
+                to={link.path}
+                className={({ isActive }) => 
+                  `relative px-2 py-1 transition-colors duration-300 hover:text-cta ${
+                    isActive ? 'text-cta font-semibold' : ''
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.name}
+                    {isActive && (
+                      <motion.div 
+                        layoutId="underline" 
+                        className="absolute left-0 bottom-0 w-full h-0.5 bg-cta" 
+                      />
+                    )}
+                  </>
+                )}
+              </NavLink>
+            </motion.div>
           ))}
-          <NavLink 
-            to="/contacto"
-            className="bg-cta hover:bg-[#A38A66] text-bgmain font-semibold py-2 px-6 rounded-lg shadow-md transition-all hover:shadow-lg active:scale-95"
-          >
-            Consulta Rápida
-          </NavLink>
-        </nav>
+          <motion.div variants={itemNav}>
+            <NavLink 
+              to="/contacto"
+              className="bg-cta hover:bg-[#A38A66] text-bgmain font-semibold py-2.5 px-6 rounded-lg shadow-lg transition-all hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 active:scale-95"
+            >
+              Consulta Rápida
+            </NavLink>
+          </motion.div>
+        </motion.nav>
 
         {/* Mobile Menu Button */}
         <button 
