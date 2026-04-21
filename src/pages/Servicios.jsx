@@ -242,7 +242,7 @@ const Servicios = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-10px" }}
           className="space-y-6"
         >
           {divisions.map((div) => (

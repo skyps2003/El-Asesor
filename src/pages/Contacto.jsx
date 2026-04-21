@@ -78,7 +78,7 @@ const Contacto = () => {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-10px" }}
             className="lg:col-span-5 space-y-6"
           >
             {/* Horarios Card */}

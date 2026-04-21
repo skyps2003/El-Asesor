@@ -37,7 +37,7 @@ const scaleIn = {
 
 const Counter = ({ from, to, duration = 2.5 }) => {
   const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-100px" });
+  const inView = useInView(nodeRef, { once: true, margin: "-10px" });
 
   useEffect(() => {
     if (inView) {
@@ -143,7 +143,7 @@ const Pillars = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-10px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -mt-24 lg:-mt-32 relative z-20"
         >
           {pillars.map((pillar, idx) => (

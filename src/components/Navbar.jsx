@@ -120,35 +120,40 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={{
+              visible: { opacity: 1, height: 'auto', transition: { duration: 0.3, staggerChildren: 0.1, delayChildren: 0.1 } },
+              hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } }
+            }}
             className="md:hidden absolute top-full left-0 w-full bg-bgmain text-primary shadow-xl border-t border-gray-200 overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 space-y-4 font-medium">
               {navLinks.map((link) => (
-                <NavLink 
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) => 
-                    `block px-4 py-2 rounded-md transition-colors ${
-                      isActive ? 'bg-bgalt text-cta font-semibold' : 'hover:bg-bgalt'
-                    }`
-                  }
-                >
-                  {link.name}
-                </NavLink>
+                <motion.div key={link.name} variants={itemNav}>
+                  <NavLink 
+                    to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) => 
+                      `block px-4 py-3 rounded-md transition-colors active:scale-95 ${
+                        isActive ? 'bg-bgalt text-cta font-semibold' : 'hover:bg-bgalt'
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </motion.div>
               ))}
-              <div className="pt-4 border-t border-gray-200">
+              <motion.div variants={itemNav} className="pt-4 border-t border-gray-200">
                 <NavLink 
                   to="/contacto"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-cta text-bgmain font-semibold py-3 rounded-lg"
+                  className="block w-full text-center bg-cta hover:bg-[#A38A66] active:scale-95 text-bgmain font-semibold py-3 rounded-lg transition-transform"
                 >
                   Consulta Rápida
                 </NavLink>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         )}

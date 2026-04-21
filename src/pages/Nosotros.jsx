@@ -96,7 +96,7 @@ const Nosotros = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-10px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {[
@@ -131,7 +131,7 @@ const Nosotros = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-10px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-10"
         >
           {[
@@ -240,7 +240,7 @@ const Nosotros = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-10px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-16 mt-24"
         >
           {team.map((member, idx) => (
