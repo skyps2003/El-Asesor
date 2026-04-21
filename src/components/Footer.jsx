@@ -102,7 +102,7 @@ const Footer = () => {
             <h4 className="text-sm font-bold text-cta tracking-widest uppercase mb-8">Sede  - {selectedLocation.city}</h4>
             <div className="bg-white/5 p-1 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group">
               <div className="w-full h-32 rounded-xl overflow-hidden relative">
-                <iframe
+                <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                   key={selectedLocation.id}
                   title={`Mapa Sede ${selectedLocation.city}`}
                   width="100%"

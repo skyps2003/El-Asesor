@@ -160,7 +160,7 @@ const Pillars = () => {
               >
                 {pillar.icon}
               </motion.div>
-              <h3 className="text-xl font-bold text-primary mb-4">{pillar.title}</h3>
+              <h2 className="text-xl font-bold text-primary mb-4">{pillar.title}</h2>
               <p className="text-gray-600 leading-relaxed text-sm">
                 {pillar.desc}
               </p>
@@ -233,10 +233,10 @@ const ServicesPreview = () => {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-sm font-bold text-cta tracking-widest uppercase mb-3 flex items-center justify-center gap-2">
+          <p className="text-sm font-bold text-cta tracking-widest uppercase mb-3 flex items-center justify-center gap-2">
             <span className="w-8 h-[2px] bg-cta"></span> Nuestras Especialidades <span className="w-8 h-[2px] bg-cta"></span>
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6">Áreas de Práctica</h3>
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6">Áreas de Práctica</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
             Soluciones integrales que combinan la técnica contable, el rigor jurídico y la precisión pericial.
           </p>

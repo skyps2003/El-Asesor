@@ -210,7 +210,7 @@ const Contacto = () => {
               className="rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex-grow min-h-[320px] w-full relative bg-white p-2 group hover:shadow-2xl hover:border-cta/30 transition-all duration-500"
             >
               <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                <iframe
+                <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                   key={selectedLocation.id}
                   title={`Mapa Sede ${selectedLocation.city}`}
                   width="100%"

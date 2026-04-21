@@ -53,6 +53,9 @@ const Navbar = () => {
             transition={{ duration: 0.5, type: "spring" }}
             src={logoImg} 
             alt="El Asesor Logo" 
+            width="120"
+            height="48"
+            fetchPriority="high"
             className="h-12 w-auto transition-transform duration-300 group-hover:scale-110" 
           />
           <motion.span 
