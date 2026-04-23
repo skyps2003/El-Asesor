@@ -8,7 +8,8 @@ import { LocationContext } from '../context/LocationContext';
 const Footer = () => {
   const phone = import.meta.env.VITE_PHONE || '+51 994 715 485';
   const email = import.meta.env.VITE_EMAIL || 'info@estudioelasesor.com';
-  const { selectedLocation } = useContext(LocationContext);
+  const { sedesData } = useContext(LocationContext);
+  const sedePrincipal = sedesData.find(s => s.id === 'abancay') || sedesData[0];
 
   // Visit counter state
   const [visits, setVisits] = useState(0);
@@ -99,26 +100,26 @@ const Footer = () => {
 
           {/* Column 3: Sede Central (Map) */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
-            <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Sede  - {selectedLocation.city}</h4>
+            <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Sede Principal - {sedePrincipal.city}</h4>
             <div className="bg-white/5 p-1 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group">
               <div className="w-full h-32 rounded-xl overflow-hidden relative">
                 <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                  key={selectedLocation.id}
-                  title={`Mapa Sede ${selectedLocation.city}`}
+                  key={sedePrincipal.id}
+                  title={`Mapa Sede ${sedePrincipal.city}`}
                   width="100%"
                   height="100%"
                   frameBorder="0"
                   scrolling="no"
                   marginHeight="0"
                   marginWidth="0"
-                  src={selectedLocation.mapSrc}
+                  src={sedePrincipal.mapSrc}
                   className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 opacity-70 group-hover:opacity-100"
                 ></iframe>
               </div>
             </div>
             <div className="mt-4 flex items-start gap-3 text-gray-400 text-sm">
               <MapPin className="w-4 h-4 text-cta shrink-0 mt-0.5" />
-              <p className="leading-relaxed">{selectedLocation.address}</p>
+              <p className="leading-relaxed">{sedePrincipal.address}</p>
             </div>
           </motion.div>
 

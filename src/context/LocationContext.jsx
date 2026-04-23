@@ -53,14 +53,15 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
 export const LocationContext = createContext();
 
 export const LocationProvider = ({ children }) => {
-  const [selectedLocation, setSelectedLocation] = useState(sedesData[0]);
+  const defaultSede = sedesData.find(sede => sede.id === 'abancay') || sedesData[0];
+  const [selectedLocation, setSelectedLocation] = useState(defaultSede);
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          let closest = sedesData[0];
+          let closest = defaultSede;
           let minDistance = Infinity;
 
           sedesData.forEach(sede => {
