@@ -41,8 +41,8 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-bgmain/95 backdrop-blur-md shadow-md py-3 text-primary' 
-          : 'bg-primary/90 backdrop-blur-sm py-5 text-bgmain'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 text-primary border-b border-gray-100' 
+          : 'bg-white/90 backdrop-blur-sm py-5 text-primary shadow-sm'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -102,7 +102,7 @@ const Navbar = () => {
           <motion.div variants={itemNav}>
             <NavLink 
               to="/contacto"
-              className="bg-cta hover:bg-[#A38A66] text-bgmain font-semibold py-2.5 px-6 rounded-lg shadow-lg transition-all hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 active:scale-95"
+              className="bg-cta hover:bg-[#7a0101] text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg transition-all hover:shadow-[0_0_15px_rgba(96,1,1,0.4)] hover:-translate-y-0.5 active:scale-95"
             >
               Consulta Rápida
             </NavLink>
@@ -152,7 +152,7 @@ const Navbar = () => {
                 <NavLink 
                   to="/contacto"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-cta hover:bg-[#A38A66] active:scale-95 text-bgmain font-semibold py-3 rounded-lg transition-transform"
+                  className="block w-full text-center bg-cta hover:bg-[#7a0101] active:scale-95 text-white font-semibold py-3 rounded-lg transition-transform"
                 >
                   Consulta Rápida
                 </NavLink>

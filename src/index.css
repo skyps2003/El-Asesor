@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #2D3E33; /* Verde Bosque */
-  --color-secondary: #4B594E; /* Verde Musgo */
-  --color-cta: #9C7A4B; /* Oro Viejo oscuro para mejor contraste */
-  --color-bgmain: #F9F8F6; /* Hueso / Off-white */
-  --color-bgalt: #E8DFD5; /* Beige Arena */
-  --color-body: #333333; /* Gris Carbón */
-  --font-sans: 'Inter', system-ui, sans-serif;
-}
+@import "./theme.css";
 
 html {
   scroll-behavior: smooth;

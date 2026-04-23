@@ -44,7 +44,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#1A2620] text-bgmain relative overflow-hidden border-t-4 border-cta">
+    <footer className="bg-primary text-bgmain relative overflow-hidden border-t-4 border-cta">
       {/* Decorative background element */}
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
@@ -64,10 +64,10 @@ const Footer = () => {
           {/* Column 1: Brand & Description */}
           <motion.div variants={fadeUp} className="lg:col-span-4 flex flex-col">
             <div className="flex items-center gap-4 mb-8 group">
-              <div className="bg-white p-2 rounded-xl shadow-[0_0_15px_rgba(212,175,55,0.2)] border border-cta/20 group-hover:border-cta transition-colors duration-300">
-                <img src={logoImg} alt="El Asesor Logo" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
+              <div className="bg-white p-2 rounded-xl shadow-lg transition-all duration-300 group-hover:scale-105">
+                <img src={logoImg} alt="El Asesor Logo" className="h-12 w-auto object-contain" />
               </div>
-              <span className="text-3xl font-bold tracking-tight text-white group-hover:text-cta transition-colors duration-300">El Asesor</span>
+              <span className="text-3xl font-bold tracking-tight text-white group-hover:text-gray-300 transition-colors duration-300">El Asesor</span>
             </div>
             <p className="text-gray-400 leading-relaxed text-sm mb-8 pr-4">
               Firma líder multidisciplinaria dedicada a transformar la complejidad legal, contable y pericial en tranquilidad absoluta y crecimiento sostenido para su organización.
@@ -76,7 +76,7 @@ const Footer = () => {
 
           {/* Column 2: Navigation Links */}
           <motion.div variants={fadeUp} className="lg:col-span-2">
-            <h4 className="text-sm font-bold text-cta tracking-widest uppercase mb-8">Navegación</h4>
+            <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Navegación</h4>
             <ul className="space-y-4">
               {[
                 { name: 'Inicio', path: '/' },
@@ -89,7 +89,7 @@ const Footer = () => {
                     to={link.path}
                     className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors focus:outline-none group text-sm"
                   >
-                    <ChevronRight className="w-4 h-4 text-cta/0 group-hover:text-cta transition-all -ml-2 opacity-0 group-hover:opacity-100 group-hover:ml-0" />
+                    <ChevronRight className="w-4 h-4 text-cta/0 group-hover:text-white transition-all -ml-2 opacity-0 group-hover:opacity-100 group-hover:ml-0" />
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
                   </NavLink>
                 </li>
@@ -99,7 +99,7 @@ const Footer = () => {
 
           {/* Column 3: Sede Central (Map) */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
-            <h4 className="text-sm font-bold text-cta tracking-widest uppercase mb-8">Sede  - {selectedLocation.city}</h4>
+            <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Sede  - {selectedLocation.city}</h4>
             <div className="bg-white/5 p-1 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group">
               <div className="w-full h-32 rounded-xl overflow-hidden relative">
                 <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
@@ -124,27 +124,27 @@ const Footer = () => {
 
           {/* Column 4: Contact Info */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
-            <h4 className="text-sm font-bold text-cta tracking-widest uppercase mb-8">Comuníquese</h4>
+            <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Comuníquese</h4>
             <ul className="space-y-6">
               <li>
                 <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-4 group focus:outline-none hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-cta group-hover:border-cta transition-colors shadow-lg">
-                    <Phone className="w-4 h-4 text-white group-hover:text-bgmain transition-colors" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg">
+                    <Phone className="w-4 h-4 text-white group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <span className="block text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">Llámenos</span>
-                    <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">{phone}</span>
+                    <span className="text-white text-sm font-medium group-hover:text-gray-300 transition-colors">{phone}</span>
                   </div>
                 </a>
               </li>
               <li>
                 <a href={`mailto:${email}`} className="flex items-center gap-4 group focus:outline-none hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-cta group-hover:border-cta transition-colors shadow-lg">
-                    <Mail className="w-4 h-4 text-white group-hover:text-bgmain transition-colors" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg">
+                    <Mail className="w-4 h-4 text-white group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <span className="block text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">Escríbanos</span>
-                    <span className="text-white text-sm font-medium group-hover:text-cta transition-colors truncate max-w-[200px] block">{email}</span>
+                    <span className="text-white text-sm font-medium group-hover:text-gray-300 transition-colors truncate max-w-[200px] block">{email}</span>
                   </div>
                 </a>
               </li>
@@ -159,8 +159,8 @@ const Footer = () => {
             © 2026 Practicantes de CONSTRUCTORA Y CONSULTORA CONTRATISTAS GENERALES ASOCIADOS INTEROCEANICA JJJA S.R.L - Todos los derechos reservados.
           </p>
           <div className="flex gap-6 text-xs text-gray-500 font-medium items-center">
-            <NavLink to="/terminos" className="hover:text-cta transition-colors">Términos Legales</NavLink>
-            <NavLink to="/privacidad" className="hover:text-cta transition-colors">Política de Privacidad</NavLink>
+            <NavLink to="/terminos" className="hover:text-white transition-colors">Términos Legales</NavLink>
+            <NavLink to="/privacidad" className="hover:text-white transition-colors">Política de Privacidad</NavLink>
             {/* Contador muy disimulado */}
             {visits > 0 && (
               <span

@@ -4,6 +4,12 @@ import {
   Target, Eye, ShieldCheck, Users, Award, Scale, Quote, Mail 
 } from 'lucide-react';
 
+import imgJuan from '../assets/team/juan.png';
+import imgCesar from '../assets/team/cesar.png';
+import imgJorge from '../assets/team/jorge.png';
+import imgAndre from '../assets/team/andre.png';
+import imgVictor from '../assets/team/victor.png';
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -22,7 +28,19 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-const Avatar = ({ name }) => {
+const Avatar = ({ name, image }) => {
+  if (image) {
+    return (
+      <motion.div 
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+        className="w-24 h-24 rounded-full bg-bgalt flex items-center justify-center shadow-lg border-4 border-bgmain mx-auto -mt-12 relative z-10 overflow-hidden"
+      >
+        <img src={image} alt={name} className="w-full h-full object-cover" />
+      </motion.div>
+    );
+  }
+
   const cleanName = name.replace(/^(Dr\.|Dr\.H\.C\.|MG\.CPCC\.)\s*/i, '');
   const initials = cleanName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
   
@@ -42,22 +60,26 @@ const Nosotros = () => {
     {
       name: "Dr. Cesar Holguino H.",
       desc: "Abogado penalista, ex fiscal de Puerto Maldonado, Chalhuanca y Challhuahuacho.",
-      email: "cesar.holguino@estudioelasesor.com"
+      email: "cesar.holguino@estudioelasesor.com",
+      image: imgCesar
     },
     {
       name: "Dr. Jorge Ayquipa Mendoza",
       desc: "Abogado colegiado (CAL 32129), especialista en procesos laborales y civiles.",
-      email: "jorge.ayquipa@estudioelasesor.com"
+      email: "jorge.ayquipa@estudioelasesor.com",
+      image: imgJorge
     },
     {
       name: "José André Jaramillo A.",
       desc: "Economista especializado en comercio internacional, análisis econométrico y finanzas globales.",
-      email: "andre.jaramillo@estudioelasesor.com"
+      email: "andre.jaramillo@estudioelasesor.com",
+      image: imgAndre
     },
     {
       name: "Dr.H.C. Víctor Aguirre Loaiza",
       desc: "Doctor Univ. CIDAE (México), autor, ex magistrado del Poder Judicial y docente universitario.",
-      email: "victor.aguirre@estudioelasesor.com"
+      email: "victor.aguirre@estudioelasesor.com",
+      image: imgVictor
     }
   ];
 
@@ -78,11 +100,11 @@ const Nosotros = () => {
           animate="visible"
           className="container mx-auto max-w-4xl relative z-10"
         >
-          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cta font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">
+          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">
             Sobre Nuestra Firma
           </motion.span>
-          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain mb-6 leading-tight">
-            Trayectoria y Excelencia <br/> <span className="text-cta">Multidisciplinaria</span>
+          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Trayectoria y Excelencia <br/> <span className="text-white">Multidisciplinaria</span>
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Respaldamos su gestión corporativa y patrimonial con un equipo de especialistas técnicos de alto nivel.
@@ -160,8 +182,8 @@ const Nosotros = () => {
               {/* Decorative line */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cta to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
               
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#1A2620] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-500 transform group-hover:-rotate-3 group-hover:scale-110">
-                <item.icon className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />
+              <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cta group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-500 transform group-hover:-rotate-3 group-hover:scale-110">
+                <item.icon className="w-8 h-8 text-white transition-colors duration-500" />
               </div>
               <h2 className="text-3xl font-bold text-primary group-hover:text-bgmain transition-colors duration-500 mb-5 relative inline-block">
                 {item.title}
@@ -197,13 +219,13 @@ const Nosotros = () => {
           
           <div className="md:w-1/3 flex flex-col items-center text-center relative z-10">
             <motion.div 
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              className="w-40 h-40 rounded-full bg-bgmain border-[6px] border-cta shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center text-5xl font-bold text-primary mb-8"
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              className="w-40 h-40 rounded-full bg-bgalt border-[6px] border-cta shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center text-5xl font-bold text-primary mb-8 overflow-hidden"
             >
-              JJ
+              <img src={imgJuan} alt="MG.CPCC. Juan Jaramillo" className="w-full h-full object-cover" />
             </motion.div>
             <h3 className="text-2xl font-bold text-bgmain">MG.CPCC.<br/>Juan Jaramillo</h3>
-            <p className="text-cta text-sm mt-3 font-bold tracking-widest uppercase">Fundador & CEO</p>
+            <p className="text-[#E8A5A5] text-sm mt-3 font-bold tracking-widest uppercase">Fundador & CEO</p>
           </div>
 
           <div className="md:w-2/3 relative z-10">
@@ -250,7 +272,7 @@ const Nosotros = () => {
               whileHover={{ y: -15 }}
               className="bg-white rounded-[2rem] p-8 pt-0 shadow-lg border border-gray-100 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:border-cta/30 transition-all duration-500 flex flex-col items-center h-full group"
             >
-              <Avatar name={member.name} />
+              <Avatar name={member.name} image={member.image} />
               
               <h3 className="text-xl font-bold text-primary mt-8 mb-4 min-h-[56px] flex items-center justify-center group-hover:text-cta transition-colors">
                 {member.name}

@@ -32,11 +32,11 @@ const Privacidad = () => {
           animate="visible"
           className="container mx-auto max-w-4xl relative z-10"
         >
-          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cta font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">
+          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">
             Documentación Oficial
           </motion.span>
-          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain mb-6 leading-tight">
-            Política de <br/><span className="text-cta">Privacidad</span>
+          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Política de <br/><span className="text-white">Privacidad</span>
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Transparencia y seguridad absoluta en el manejo de su información profesional y corporativa.
@@ -57,7 +57,7 @@ const Privacidad = () => {
           <div className="flex items-center gap-5 mb-8 pb-6 border-b border-gray-100 relative z-10">
             <motion.div 
               whileHover={{ rotate: 10, scale: 1.1 }}
-              className="w-14 h-14 rounded-2xl bg-bgalt text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-cta transition-colors duration-300"
+              className="w-14 h-14 rounded-2xl bg-white shadow-md border border-gray-50 text-primary flex items-center justify-center shrink-0 group-hover:text-cta transition-all duration-300"
             >
               <Shield className="w-7 h-7" />
             </motion.div>

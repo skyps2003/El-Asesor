@@ -59,9 +59,9 @@ const Contacto = () => {
           animate="visible"
           className="container mx-auto max-w-4xl relative z-10"
         >
-          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cta font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">Atención Inmediata</motion.span>
-          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain mb-6 leading-tight">
-            Hablemos de su próximo <br/><span className="text-cta">paso estratégico</span>
+          <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">Atención Inmediata</motion.span>
+          <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Hablemos de su próximo <br/><span className="text-white">paso estratégico</span>
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Estamos aquí para resolver sus dudas y brindarle el respaldo que su empresa necesita. Contáctenos hoy mismo y un especialista atenderá su requerimiento de inmediato.
@@ -83,7 +83,7 @@ const Contacto = () => {
           >
             {/* Horarios Card */}
             <motion.div variants={fadeInUp} whileHover={{ y: -5, scale: 1.01 }} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex gap-5 items-start group hover:border-cta/50 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-primary group-hover:text-cta flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:rotate-6">
+              <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-white group-hover:shadow-md group-hover:text-cta flex items-center justify-center shrink-0 transition-all duration-300 group-hover:rotate-6">
                 <Clock className="w-6 h-6" />
               </div>
               <div>
@@ -97,7 +97,7 @@ const Contacto = () => {
 
             {/* Canales Digitales Card */}
             <motion.div variants={fadeInUp} whileHover={{ y: -5, scale: 1.01 }} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex gap-5 items-start group hover:border-cta/50 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-primary group-hover:text-cta flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:-rotate-6">
+              <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-white group-hover:shadow-md group-hover:text-cta flex items-center justify-center shrink-0 transition-all duration-300 group-hover:-rotate-6">
                 <Mail className="w-6 h-6" />
               </div>
               <div className="w-full">
@@ -116,7 +116,7 @@ const Contacto = () => {
             <motion.div variants={fadeInUp} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 group hover:border-cta/30 transition-colors relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-cta/5 rounded-full blur-2xl"></div>
               <div className="flex gap-5 items-center mb-6 relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-primary group-hover:text-cta flex items-center justify-center shrink-0 transition-colors duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-white group-hover:shadow-md group-hover:text-cta flex items-center justify-center shrink-0 transition-all duration-300">
                   <Building2 className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-primary">Nuestras Sedes</h3>

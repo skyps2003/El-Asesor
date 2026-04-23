@@ -14,6 +14,14 @@ import {
   Clock
 } from 'lucide-react';
 
+import img1 from '../assets/inicio/01-asesoria.jpg';
+import img2 from '../assets/inicio/02-auditoria.jpg';
+import img3 from '../assets/inicio/03-peritaje.jpg';
+import img4 from '../assets/inicio/04-innovacion.jpg';
+import img5 from '../assets/inicio/05-derecho.jpg';
+import img6 from '../assets/inicio/06-contable.jpg';
+import img7 from '../assets/inicio/07-auditoria-int.jpg';
+
 // --- Shared Animation Variants ---
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -77,14 +85,14 @@ const Hero = () => (
         animate="visible"
         className="max-w-3xl"
       >
-        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-cta font-medium text-sm mb-6 border border-white/10 backdrop-blur-sm">
+        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white font-medium text-sm mb-6 border border-white/10 backdrop-blur-sm hover:border-cta hover:bg-white/20 transition-colors duration-300 cursor-default">
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse"></span>
           Estudio Jurídico-Contable
         </motion.div>
         
         <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain leading-tight mb-6">
           Experiencia y ética al <br className="hidden md:block" />
-          <span className="text-cta relative inline-block">
+          <span className="text-white relative inline-block">
             servicio de su empresa.
             <motion.div 
               initial={{ width: 0 }}
@@ -100,10 +108,10 @@ const Hero = () => (
         </motion.p>
         
         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-          <NavLink to="/contacto" className="bg-cta hover:bg-[#A38A66] text-bgmain font-semibold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none">
+          <NavLink to="/contacto" className="bg-cta hover:bg-[#7a0101] text-white font-semibold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none">
             Cotizar Servicio <ChevronRight className="w-5 h-5" />
           </NavLink>
-          <NavLink to="/nosotros" className="bg-white/5 hover:bg-white/10 text-bgmain font-semibold py-4 px-8 rounded-xl border border-white/20 backdrop-blur-md hover:-translate-y-1 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-white outline-none text-center">
+          <NavLink to="/nosotros" className="bg-white/5 hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-xl border border-white/20 backdrop-blur-md hover:-translate-y-1 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-white outline-none text-center">
             Conocer Más
           </NavLink>
         </motion.div>
@@ -117,22 +125,26 @@ const Pillars = () => {
     {
       title: "Asesoría Integral",
       desc: "Sincronizamos la defensa legal con la gestión contable. Un enfoque 360° para que su empresa o patrimonio cumpla con la normativa.",
-      icon: <ShieldCheck className="w-8 h-8 text-cta" />
+      icon: <ShieldCheck className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img1
     },
     {
       title: "Auditorías Preventivas",
       desc: "Revisiones exhaustivas de sus estados financieros y procesos internos para detectar riesgos a tiempo y garantizar la transparencia.",
-      icon: <Search className="w-8 h-8 text-cta" />
+      icon: <Search className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img2
     },
     {
       title: "Peritajes Especializados",
       desc: "Elaboramos dictámenes periciales con rigor técnico y objetividad, fundamentales para la resolución de conflictos judiciales.",
-      icon: <Scale className="w-8 h-8 text-cta" />
+      icon: <Scale className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img3
     },
     {
       title: "Innovación y Ética",
       desc: "Aplicamos tecnología de vanguardia en cada análisis pericial y contable, actuando siempre bajo principios éticos sólidos.",
-      icon: <Lightbulb className="w-8 h-8 text-cta" />
+      icon: <Lightbulb className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img4
     }
   ];
 
@@ -150,20 +162,21 @@ const Pillars = () => {
             <motion.div 
               key={idx}
               variants={fadeInUp}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-bgmain rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-transparent hover:border-cta group cursor-default relative overflow-hidden"
+              whileHover={{ y: -10 }}
+              className="group rounded-3xl overflow-hidden relative shadow-lg hover:shadow-2xl h-[380px] focus-within:ring-4 focus-within:ring-cta/50 outline-none transition-all duration-500"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-full -z-10 group-hover:bg-cta/5 transition-colors duration-500"></div>
-              <motion.div 
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                className="w-16 h-16 rounded-2xl bg-bgalt flex items-center justify-center mb-6 shadow-sm"
-              >
-                {pillar.icon}
-              </motion.div>
-              <h2 className="text-xl font-bold text-primary mb-4">{pillar.title}</h2>
-              <p className="text-gray-600 leading-relaxed text-sm">
-                {pillar.desc}
-              </p>
+              <img src={pillar.image} alt={pillar.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-black/30 transition-opacity duration-500 group-hover:from-primary group-hover:via-primary/80"></div>
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end text-left z-10">
+                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-5 shadow-xl transform group-hover:-translate-y-2 transition-all duration-500">
+                  {pillar.icon}
+                </div>
+                <h2 className="text-xl font-bold text-white mb-3 drop-shadow-md">{pillar.title}</h2>
+                <p className="text-gray-200 text-sm leading-relaxed drop-shadow-md">
+                  {pillar.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -191,7 +204,7 @@ const Stats = () => (
         ].map((stat, i) => (
           <motion.div key={i} variants={scaleIn} className="p-4 relative group">
             <div className="absolute inset-0 bg-cta/0 group-hover:bg-cta/5 blur-xl rounded-full transition-colors duration-500"></div>
-            <h4 className="text-4xl md:text-6xl font-bold text-cta mb-3 relative z-10 drop-shadow-lg">
+            <h4 className="text-4xl md:text-6xl font-bold text-white mb-3 relative z-10 drop-shadow-lg">
               <Counter from={0} to={stat.num} />{stat.suffix}
             </h4>
             <p className="text-gray-300 font-medium tracking-widest uppercase text-xs md:text-sm relative z-10">{stat.label}</p>
@@ -207,17 +220,20 @@ const ServicesPreview = () => {
     {
       title: "Derecho Corporativo y Civil",
       desc: "Asesoría en contratos, constitución de empresas, sociedades y defensa de intereses civiles.",
-      icon: <Briefcase className="w-7 h-7 text-bgmain" />
+      icon: <Briefcase className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img5
     },
     {
       title: "Gestión Contable y Tributaria",
       desc: "Externalización contable, liquidación de impuestos y planeamiento tributario para optimizar sus recursos.",
-      icon: <Calculator className="w-7 h-7 text-bgmain" />
+      icon: <Calculator className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img6
     },
     {
       title: "Auditoría Integral",
       desc: "Examen crítico y sistemático de estados financieros y procesos operativos para garantizar transparencia.",
-      icon: <FileCheck className="w-7 h-7 text-bgmain" />
+      icon: <FileCheck className="w-8 h-8 text-primary group-hover:text-cta transition-colors duration-500" />,
+      image: img7
     }
   ];
 
@@ -254,17 +270,19 @@ const ServicesPreview = () => {
               key={idx} 
               variants={fadeInUp}
               whileHover={{ y: -12 }}
-              className="group p-10 rounded-3xl bg-white border border-gray-100 hover:bg-[#1A2620] hover:text-bgmain transition-all duration-500 shadow-lg hover:shadow-2xl focus-within:ring-2 focus-within:ring-cta outline-none relative overflow-hidden"
+              className="group rounded-[2rem] overflow-hidden relative shadow-lg hover:shadow-2xl h-[400px] focus-within:ring-4 focus-within:ring-cta/50 outline-none transition-all duration-500"
             >
-              <div className="absolute top-0 left-0 w-2 h-full bg-cta transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
-              
-              <div className="w-16 h-16 rounded-2xl bg-[#1A2620] group-hover:bg-cta flex items-center justify-center mb-8 transition-colors duration-500 shadow-md">
-                {service.icon}
+              <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/60 to-black/10 transition-opacity duration-500 group-hover:from-primary group-hover:via-primary/80"></div>
+              <div className="absolute inset-0 p-8 flex flex-col justify-end text-left z-10">
+                <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-xl transform group-hover:-translate-y-2 transition-all duration-500">
+                  {service.icon}
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3 drop-shadow-md">{service.title}</h4>
+                <p className="text-gray-300 text-sm leading-relaxed drop-shadow-md">
+                  {service.desc}
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-primary group-hover:text-bgmain mb-4 transition-colors duration-500">{service.title}</h4>
-              <p className="text-gray-600 group-hover:text-gray-300 transition-colors duration-500 leading-relaxed text-sm">
-                {service.desc}
-              </p>
             </motion.div>
           ))}
         </motion.div>
@@ -275,7 +293,7 @@ const ServicesPreview = () => {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <NavLink to="/servicios" className="bg-cta hover:bg-[#A38A66] text-bgmain font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none group">
+          <NavLink to="/servicios" className="bg-cta hover:bg-[#7a0101] text-white font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none group">
             VER TODOS LOS SERVICIOS 
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </NavLink>
@@ -309,7 +327,7 @@ const DownloadBrochure = () => {
       icon: <Download className="w-6 h-6" />, 
       title: "DESCARGAR BROCHURE", 
       sub: "(VERSIÓN PDF)", 
-      classes: "bg-cta hover:bg-[#A38A66] text-bgmain" 
+      classes: "bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)]" 
     },
     loading: { 
       icon: <div className="w-6 h-6 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>, 
@@ -321,7 +339,7 @@ const DownloadBrochure = () => {
       icon: <Clock className="w-6 h-6 animate-pulse" />, 
       title: "EN ACTUALIZACIÓN", 
       sub: "(PRÓXIMAMENTE)", 
-      classes: "bg-gray-900 text-cta border border-cta/30 cursor-not-allowed shadow-none" 
+      classes: "bg-gray-900 text-white border border-cta/30 cursor-not-allowed shadow-none" 
     }
   };
 
@@ -345,8 +363,8 @@ const DownloadBrochure = () => {
           />
           
           <div className="lg:w-2/3 relative z-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-bgmain mb-6 leading-tight">
-              Conozca nuestro portafolio de <span className="text-cta">soluciones integrales.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              Conozca nuestro portafolio de <span className="text-white">soluciones integrales.</span>
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
               Descargue nuestra presentación corporativa y descubra cómo nuestras unidades de derecho, contabilidad y peritajes pueden fortalecer, proteger y hacer crecer su empresa.
