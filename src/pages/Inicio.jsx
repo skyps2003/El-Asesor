@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, useInView, animate } from 'framer-motion';
-import { 
-  Scale, 
-  ShieldCheck, 
-  Search, 
-  Lightbulb, 
-  Briefcase, 
-  Calculator, 
-  FileCheck, 
+import {
+  Scale,
+  ShieldCheck,
+  Search,
+  Lightbulb,
+  Briefcase,
+  Calculator,
+  FileCheck,
   ChevronRight,
   Download,
   Clock
@@ -21,6 +21,8 @@ import img4 from '../assets/inicio/04-innovacion.jpg';
 import img5 from '../assets/inicio/05-derecho.jpg';
 import img6 from '../assets/inicio/06-contable.jpg';
 import img7 from '../assets/inicio/07-auditoria-int.jpg';
+import imgJuan from '../assets/inicio/juan para el uniio.png';
+
 
 // --- Shared Animation Variants ---
 const staggerContainer = {
@@ -68,9 +70,22 @@ const Counter = ({ from, to, duration = 2.5 }) => {
 
 const Hero = () => (
   <section className="relative bg-primary pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+    {/* Juan Image Background (Right Side) */}
+    <div className="absolute top-0 right-0 w-full h-full md:w-3/4 lg:w-1/2 z-0 pointer-events-none">
+      <img
+        src={imgJuan}
+        alt=""
+        className="w-full h-full object-cover object-top opacity-99 filter grayscale"
+        style={{
+          maskImage: 'linear-gradient(to left, black 0%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to left, black 0%, transparent 100%)'
+        }}
+      />
+    </div>
+
     {/* Animated Background Elements */}
     <div className="absolute inset-0 opacity-10">
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         className="absolute -top-24 -right-24 w-[40rem] h-[40rem] rounded-full bg-bgmain blur-[100px]"
@@ -79,7 +94,7 @@ const Hero = () => (
     </div>
 
     <div className="container mx-auto px-6 relative z-10">
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -89,12 +104,12 @@ const Hero = () => (
           <span className="w-2 h-2 rounded-full bg-cta animate-pulse"></span>
           Estudio Jurídico-Contable
         </motion.div>
-        
+
         <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-bgmain leading-tight mb-6">
           Experiencia y ética al <br className="hidden md:block" />
           <span className="text-white relative inline-block">
             servicio de su empresa.
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1, duration: 1 }}
@@ -102,11 +117,11 @@ const Hero = () => (
             />
           </span>
         </motion.h1>
-        
+
         <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
           En <span className="font-semibold text-bgmain">El Asesor</span>, transformamos la complejidad legal y tributaria en tranquilidad para nuestros clientes. Brindamos un acompañamiento profesional basado en la transparencia, la innovación tecnológica y el compromiso real con sus objetivos.
         </motion.p>
-        
+
         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
           <NavLink to="/contacto" className="bg-cta hover:bg-[#7a0101] text-white font-semibold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none">
             Cotizar Servicio <ChevronRight className="w-5 h-5" />
@@ -151,7 +166,7 @@ const Pillars = () => {
   return (
     <section className="py-16 bg-bgalt relative">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -159,7 +174,7 @@ const Pillars = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -mt-24 lg:-mt-32 relative z-20"
         >
           {pillars.map((pillar, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               variants={fadeInUp}
               whileHover={{ y: -10 }}
@@ -167,7 +182,7 @@ const Pillars = () => {
             >
               <img src={pillar.image} alt={pillar.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-black/30 transition-opacity duration-500 group-hover:from-primary group-hover:via-primary/80"></div>
-              
+
               <div className="absolute inset-0 p-8 flex flex-col justify-end text-left z-10">
                 <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-5 shadow-xl transform group-hover:-translate-y-2 transition-all duration-500">
                   {pillar.icon}
@@ -189,7 +204,7 @@ const Stats = () => (
   <section className="bg-primary py-20 relative overflow-hidden">
     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-overlay"></div>
     <div className="container mx-auto px-6 relative z-10">
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -243,7 +258,7 @@ const ServicesPreview = () => {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-bgalt/50 -skew-x-12 transform origin-top-right -z-10"></div>
 
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -258,7 +273,7 @@ const ServicesPreview = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -266,8 +281,8 @@ const ServicesPreview = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {services.map((service, idx) => (
-            <motion.div 
-              key={idx} 
+            <motion.div
+              key={idx}
               variants={fadeInUp}
               whileHover={{ y: -12 }}
               className="group rounded-[2rem] overflow-hidden relative shadow-lg hover:shadow-2xl h-[400px] focus-within:ring-4 focus-within:ring-cta/50 outline-none transition-all duration-500"
@@ -287,14 +302,14 @@ const ServicesPreview = () => {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
           <NavLink to="/servicios" className="bg-cta hover:bg-[#7a0101] text-white font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none group">
-            VER TODOS LOS SERVICIOS 
+            VER TODOS LOS SERVICIOS
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </NavLink>
         </motion.div>
@@ -309,9 +324,9 @@ const DownloadBrochure = () => {
 
   const handleClick = () => {
     if (status !== 'idle') return;
-    
+
     setStatus('loading');
-    
+
     // Simulate brief loading sequence
     setTimeout(() => {
       setStatus('unavailable');
@@ -323,23 +338,23 @@ const DownloadBrochure = () => {
   };
 
   const btnConfig = {
-    idle: { 
-      icon: <Download className="w-6 h-6" />, 
-      title: "DESCARGAR BROCHURE", 
-      sub: "(VERSIÓN PDF)", 
-      classes: "bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)]" 
+    idle: {
+      icon: <Download className="w-6 h-6" />,
+      title: "DESCARGAR BROCHURE",
+      sub: "(VERSIÓN PDF)",
+      classes: "bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)]"
     },
-    loading: { 
-      icon: <div className="w-6 h-6 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>, 
-      title: "PREPARANDO...", 
-      sub: "POR FAVOR ESPERE", 
-      classes: "bg-gray-800 text-gray-300 cursor-wait" 
+    loading: {
+      icon: <div className="w-6 h-6 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>,
+      title: "PREPARANDO...",
+      sub: "POR FAVOR ESPERE",
+      classes: "bg-gray-800 text-gray-300 cursor-wait"
     },
-    unavailable: { 
-      icon: <Clock className="w-6 h-6 animate-pulse" />, 
-      title: "EN ACTUALIZACIÓN", 
-      sub: "(PRÓXIMAMENTE)", 
-      classes: "bg-gray-900 text-white border border-cta/30 cursor-not-allowed shadow-none" 
+    unavailable: {
+      icon: <Clock className="w-6 h-6 animate-pulse" />,
+      title: "EN ACTUALIZACIÓN",
+      sub: "(PRÓXIMAMENTE)",
+      classes: "bg-gray-900 text-white border border-cta/30 cursor-not-allowed shadow-none"
     }
   };
 
@@ -348,7 +363,7 @@ const DownloadBrochure = () => {
   return (
     <section className="bg-bgalt py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -356,12 +371,12 @@ const DownloadBrochure = () => {
           className="bg-primary rounded-[2.5rem] p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl relative overflow-hidden"
         >
           {/* Decorative glowing orb */}
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 5, repeat: Infinity }}
             className="absolute -top-32 -right-32 w-96 h-96 bg-cta rounded-full blur-[100px]"
           />
-          
+
           <div className="lg:w-2/3 relative z-10">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Conozca nuestro portafolio de <span className="text-white">soluciones integrales.</span>
@@ -370,9 +385,9 @@ const DownloadBrochure = () => {
               Descargue nuestra presentación corporativa y descubra cómo nuestras unidades de derecho, contabilidad y peritajes pueden fortalecer, proteger y hacer crecer su empresa.
             </p>
           </div>
-          
+
           <div className="lg:w-1/3 flex justify-end relative z-10">
-            <motion.button 
+            <motion.button
               onClick={handleClick}
               whileHover={status === 'idle' ? { scale: 1.05 } : {}}
               whileTap={status === 'idle' ? { scale: 0.95 } : {}}
