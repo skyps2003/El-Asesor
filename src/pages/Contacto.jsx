@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Send, Clock, Building2, Share2 } from 'lucide-react';
 import { LocationContext } from '../context/LocationContext';
@@ -18,6 +18,25 @@ const fadeInUp = {
 
 const Contacto = () => {
   const { sedesData, selectedLocation, setSelectedLocation } = useContext(LocationContext);
+  const mapRef = useRef(null);
+  const [isMapVisible, setIsMapVisible] = useState(false);
+
+  useEffect(() => {
+    setIsMapVisible(false); // Reset when location changes
+    
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setIsMapVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [selectedLocation.id]);
 
   const facebookUrl = import.meta.env.VITE_FACEBOOK || '#';
   const instagramUrl = import.meta.env.VITE_INSTAGRAM || '#';
@@ -263,26 +282,36 @@ const Contacto = () => {
               </form>
             </div>
 
-            {/* Embedded Google Map */}
+            {/* Embedded Google Map with Intersection Observer (Lazy Load) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
+              ref={mapRef}
               className="rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex-grow min-h-[320px] w-full relative bg-white p-2 group hover:shadow-2xl hover:border-cta/30 transition-all duration-500"
             >
-              <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                  key={selectedLocation.id}
-                  title={`Mapa Sede ${selectedLocation.city}`}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  scrolling="no"
-                  marginHeight="0"
-                  marginWidth="0"
-                  src={selectedLocation.mapSrc}
-                  className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
-                ></iframe>
+              <div className="w-full h-full rounded-2xl overflow-hidden relative bg-gray-50 flex flex-col items-center justify-center">
+                {!isMapVisible && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
+                    <MapPin className="w-10 h-10 mb-3 opacity-50 animate-bounce" />
+                    <span className="text-sm font-medium">Cargando mapa interactivo...</span>
+                  </div>
+                )}
+                
+                {isMapVisible && (
+                  <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                    key={selectedLocation.id}
+                    title={`Mapa Sede ${selectedLocation.city}`}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    scrolling="no"
+                    marginHeight="0"
+                    marginWidth="0"
+                    src={selectedLocation.mapSrc}
+                    className="absolute inset-0 z-10 grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
+                  ></iframe>
+                )}
               </div>
             </motion.div>
           </motion.div>

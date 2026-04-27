@@ -102,24 +102,18 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Column 3: Sede Central (Map) */}
+          {/* Column 3: Sede Central (Location) */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
             <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Sede Principal - {sedePrincipal.city}</h4>
-            <div className="bg-white/5 p-1 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group">
-              <div className="w-full h-32 rounded-xl overflow-hidden relative">
-                <iframe loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                  key={sedePrincipal.id}
-                  title={`Mapa Sede ${sedePrincipal.city}`}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  scrolling="no"
-                  marginHeight="0"
-                  marginWidth="0"
-                  src={sedePrincipal.mapSrc}
-                  className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 opacity-70 group-hover:opacity-100"
-                ></iframe>
-              </div>
+            <div className="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group relative overflow-hidden flex flex-col items-center justify-center text-center">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-cta/10 rounded-full blur-xl group-hover:bg-cta/20 transition-all duration-500"></div>
+              <MapPin className="w-10 h-10 text-cta mb-4 group-hover:scale-110 transition-transform duration-500" />
+              <p className="text-gray-300 text-sm mb-4 font-medium">
+                Encuentra esta y todas nuestras sedes en el mapa interactivo.
+              </p>
+              <NavLink to="/contacto" className="inline-flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider bg-cta/80 hover:bg-cta px-4 py-2 rounded-xl transition-colors shadow-lg">
+                Ver Mapa <ChevronRight className="w-4 h-4" />
+              </NavLink>
             </div>
             <div className="mt-4 flex items-start gap-3 text-gray-400 text-sm">
               <MapPin className="w-4 h-4 text-cta shrink-0 mt-0.5" />
