@@ -11,7 +11,11 @@ import {
   FileCheck,
   ChevronRight,
   Download,
-  Clock
+  Clock,
+  Users,
+  CheckCircle2,
+  Award,
+  FileText
 } from 'lucide-react';
 
 import img1 from '../assets/inicio/01-asesoria.jpg';
@@ -212,17 +216,20 @@ const Stats = () => (
         className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 divide-x-0 md:divide-x divide-white/10 text-center"
       >
         {[
-          { num: 310, suffix: "+", label: "Clientes Satisfechos" },
-          { num: 98, suffix: "%", label: "Efectividad en Casos" },
-          { num: 10, suffix: "+", label: "Años de Experiencia" },
-          { num: 200, suffix: "+", label: "Asesorías Completadas" }
+          { num: 310, suffix: "+", label: "Clientes Satisfechos", icon: Users },
+          { num: 98, suffix: "%", label: "Efectividad en Casos", icon: CheckCircle2 },
+          { num: 10, suffix: "+", label: "Años de Experiencia", icon: Award },
+          { num: 200, suffix: "+", label: "Asesorías Completadas", icon: FileText }
         ].map((stat, i) => (
-          <motion.div key={i} variants={scaleIn} className="p-4 relative group">
+          <motion.div key={i} variants={scaleIn} className="p-4 relative group flex flex-col items-center">
             <div className="absolute inset-0 bg-cta/0 group-hover:bg-cta/5 blur-xl rounded-full transition-colors duration-500"></div>
-            <h4 className="text-4xl md:text-6xl font-bold text-white mb-3 relative z-10 drop-shadow-lg">
+            <div className="mb-6 w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-cta transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(212,175,55,0.2)]">
+              <stat.icon className="w-8 h-8 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
+            </div>
+            <h4 className="text-4xl md:text-6xl font-bold text-white mb-3 relative z-10 drop-shadow-lg group-hover:text-cta transition-colors duration-300">
               <Counter from={0} to={stat.num} />{stat.suffix}
             </h4>
-            <p className="text-gray-300 font-medium tracking-widest uppercase text-xs md:text-sm relative z-10">{stat.label}</p>
+            <p className="text-gray-300 font-medium tracking-widest uppercase text-xs md:text-sm relative z-10 group-hover:text-white transition-colors duration-300">{stat.label}</p>
           </motion.div>
         ))}
       </motion.div>

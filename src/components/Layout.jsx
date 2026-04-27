@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FloatingWidgets from './FloatingWidgets';
 
 const pageVariants = {
   initial: { opacity: 0, y: 10 },
@@ -20,7 +21,7 @@ const Layout = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
@@ -36,6 +37,7 @@ const Layout = () => {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <FloatingWidgets />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Send, Clock, Building2 } from 'lucide-react';
+import { MapPin, Mail, Send, Clock, Building2, Share2 } from 'lucide-react';
 import { LocationContext } from '../context/LocationContext';
 
 const staggerContainer = {
@@ -18,6 +18,11 @@ const fadeInUp = {
 
 const Contacto = () => {
   const { sedesData, selectedLocation, setSelectedLocation } = useContext(LocationContext);
+
+  const facebookUrl = import.meta.env.VITE_FACEBOOK || '#';
+  const instagramUrl = import.meta.env.VITE_INSTAGRAM || '#';
+  const tiktokUrl = import.meta.env.VITE_TIKTOK || '#';
+  const youtubeUrl = import.meta.env.VITE_YOUTUBE || '#';
 
   const emails = [
     "info@estudioelasesor.com",
@@ -47,7 +52,7 @@ const Contacto = () => {
     <div className="bg-bgmain min-h-screen pb-24">
       {/* Header Section */}
       <section className="bg-primary pt-32 pb-32 px-6 text-center border-b-[6px] border-cta relative overflow-hidden">
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 right-0 w-[40rem] h-[40rem] rounded-full bg-cta blur-[120px]"
@@ -61,7 +66,7 @@ const Contacto = () => {
         >
           <motion.span variants={fadeInUp} className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-sm mb-6 border border-white/10 backdrop-blur-sm">Atención Inmediata</motion.span>
           <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Hablemos de su próximo <br/><span className="text-white">paso estratégico</span>
+            Hablemos de su próximo <br /><span className="text-white">paso estratégico</span>
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Estamos aquí para resolver sus dudas y brindarle el respaldo que su empresa necesita. Contáctenos hoy mismo y un especialista atenderá su requerimiento de inmediato.
@@ -106,6 +111,62 @@ const Contacto = () => {
                   {emails.map((email, i) => (
                     <a key={i} href={`mailto:${email}`} className="block text-body hover:text-cta transition-colors text-sm font-medium">
                       {email}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Redes Sociales Card */}
+            <motion.div variants={fadeInUp} whileHover={{ y: -5, scale: 1.01 }} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex gap-5 items-start group hover:border-cta/50 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-bgalt text-primary group-hover:bg-white group-hover:shadow-md group-hover:text-cta flex items-center justify-center shrink-0 transition-all duration-300 group-hover:rotate-6">
+                <Share2 className="w-6 h-6" />
+              </div>
+              <div className="w-full">
+                <h3 className="text-xl font-bold text-primary mb-1">Visita nuestras redes sociales</h3>
+                <div className="flex gap-3 mt-4">
+                  {[
+                    {
+                      name: 'Facebook', url: facebookUrl, icon: (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      name: 'Instagram', url: instagramUrl, icon: (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                        </svg>
+                      )
+                    },
+                    {
+                      name: 'TikTok', url: tiktokUrl, icon: (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                      )
+                    },
+                    {
+                      name: 'YouTube', url: youtubeUrl, icon: (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                          <path d="M2.5 7.1C2.5 7.1 2 8.9 2 12s.5 4.9.5 4.9c.3 1.1 1.2 2 2.3 2.2C7.1 19.5 12 19.5 12 19.5s4.9 0 7.2-.4c1.1-.3 2-1.2 2.3-2.2.5 0 .5-1.8.5-4.9s-.5-4.9-.5-4.9c-.3-1.1-1.2-2-2.3-2.2-2.3-.4-7.2-.4-7.2-.4s-4.9 0-7.2.4c-1.1.2-2 1.1-2.3 2.2z" />
+                          <polygon points="10 15 15.5 12 10 9" />
+                        </svg>
+                      )
+                    }
+                  ].map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visitar ${social.name}`}
+                      className="w-11 h-11 rounded-full bg-bgalt border border-gray-100 flex items-center justify-center text-primary hover:text-white hover:bg-cta hover:border-cta hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                      {social.icon}
                     </a>
                   ))}
                 </div>
@@ -164,7 +225,7 @@ const Contacto = () => {
             {/* Form */}
             <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_15px_40px_rgb(0,0,0,0.08)] border border-gray-100 h-fit relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-cta/5 rounded-full blur-3xl scale-0 group-hover:scale-100 transition-transform duration-700 pointer-events-none"></div>
-              
+
               <h2 className="text-2xl font-bold text-primary mb-2 relative z-10">Envíenos un mensaje</h2>
               <p className="text-gray-500 mb-8 text-sm relative z-10">Completando este formulario, un asesor estratégico se comunicará con usted a la brevedad.</p>
 
@@ -203,7 +264,7 @@ const Contacto = () => {
             </div>
 
             {/* Embedded Google Map */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}

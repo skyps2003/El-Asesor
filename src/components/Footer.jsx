@@ -8,6 +8,10 @@ import { LocationContext } from '../context/LocationContext';
 const Footer = () => {
   const phone = import.meta.env.VITE_PHONE || '+51 994 715 485';
   const email = import.meta.env.VITE_EMAIL || 'info@estudioelasesor.com';
+  const facebookUrl = import.meta.env.VITE_FACEBOOK || '#';
+  const instagramUrl = import.meta.env.VITE_INSTAGRAM || '#';
+  const tiktokUrl = import.meta.env.VITE_TIKTOK || '#';
+  const youtubeUrl = import.meta.env.VITE_YOUTUBE || '#';
   const { sedesData } = useContext(LocationContext);
   const sedePrincipal = sedesData.find(s => s.id === 'abancay') || sedesData[0];
 
@@ -123,10 +127,10 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 4: Contact Info */}
+          {/* Column 4: Contact Info & Socials */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
             <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Comuníquese</h4>
-            <ul className="space-y-6">
+            <ul className="space-y-6 mb-8">
               <li>
                 <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-4 group focus:outline-none hover:-translate-y-1 transition-transform duration-300">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg">
@@ -150,6 +154,46 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+
+            <h4 className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 mt-8">Síganos</h4>
+            <div className="flex gap-3">
+              {[
+                { name: 'Facebook', url: facebookUrl, icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                )},
+                { name: 'Instagram', url: instagramUrl, icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                  </svg>
+                )},
+                { name: 'TikTok', url: tiktokUrl, icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                )},
+                { name: 'YouTube', url: youtubeUrl, icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                    <path d="M2.5 7.1C2.5 7.1 2 8.9 2 12s.5 4.9.5 4.9c.3 1.1 1.2 2 2.3 2.2C7.1 19.5 12 19.5 12 19.5s4.9 0 7.2-.4c1.1-.3 2-1.2 2.3-2.2.5 0 .5-1.8.5-4.9s-.5-4.9-.5-4.9c-.3-1.1-1.2-2-2.3-2.2-2.3-.4-7.2-.4-7.2-.4s-4.9 0-7.2.4c-1.1.2-2 1.1-2.3 2.2z"/>
+                    <polygon points="10 15 15.5 12 10 9"/>
+                  </svg>
+                )}
+              ].map((social) => (
+                <a 
+                  key={social.name} 
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label={`Visitar ${social.name}`}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-cta hover:border-cta hover:-translate-y-1 transition-all duration-300 shadow-md"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </motion.div>
 
         </motion.div>

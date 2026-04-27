@@ -56,30 +56,40 @@ const Avatar = ({ name, image }) => {
 };
 
 const Nosotros = () => {
+  const predefinedWsMsg = encodeURIComponent("Hola, vengo del sitio web y quiero más información.");
+
   const team = [
     {
       name: "Dr. Cesar Holguino H.",
-      desc: "Abogado penalista, ex fiscal de Puerto Maldonado, Chalhuanca y Challhuahuacho.",
+      role: "Abogado Penalista",
+      desc: "Ex fiscal de Puerto Maldonado, Chalhuanca y Challhuahuacho.",
       email: "cesar.holguino@estudioelasesor.com",
-      image: imgCesar
+      image: imgCesar,
+      socials: { fb: '#', linkedin: '#', whatsapp: '51999999991' }
     },
     {
       name: "Dr. Jorge Ayquipa Mendoza",
-      desc: "Abogado colegiado (CAL 32129), especialista en procesos laborales y civiles.",
+      role: "Abogado Colegiado",
+      desc: "Especialista en procesos laborales y civiles (CAL 32129).",
       email: "jorge.ayquipa@estudioelasesor.com",
-      image: imgJorge
+      image: imgJorge,
+      socials: { fb: '#', linkedin: '#', whatsapp: '51999999992' }
     },
     {
       name: "José André Jaramillo A.",
-      desc: "Economista especializado en comercio internacional, análisis econométrico y finanzas globales.",
+      role: "Economista Especializado",
+      desc: "Especialista en comercio internacional, análisis econométrico y finanzas globales.",
       email: "andre.jaramillo@estudioelasesor.com",
-      image: imgAndre
+      image: imgAndre,
+      socials: { fb: '#', linkedin: '#', whatsapp: '51999999993' }
     },
     {
       name: "Dr.H.C. Víctor Aguirre Loaiza",
-      desc: "Doctor Univ. CIDAE (México), autor, ex magistrado del Poder Judicial y docente universitario.",
+      role: "Doctor Univ. CIDAE (México)",
+      desc: "Autor, ex magistrado del Poder Judicial y docente universitario.",
       email: "victor.aguirre@estudioelasesor.com",
-      image: imgVictor
+      image: imgVictor,
+      socials: { fb: '#', linkedin: '#', whatsapp: '51999999994' }
     }
   ];
 
@@ -220,12 +230,21 @@ const Nosotros = () => {
           <div className="md:w-1/3 flex flex-col items-center text-center relative z-10">
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="w-40 h-40 rounded-full bg-bgalt border-[6px] border-cta shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center text-5xl font-bold text-primary mb-8 overflow-hidden"
+              className="w-40 h-40 rounded-full bg-bgalt border-[6px] border-cta shadow-[0_0_30px_rgba(212,175,55,0.4)] flex items-center justify-center text-5xl font-bold text-primary mb-6 overflow-hidden"
             >
               <img src={imgJuan} alt="MG.CPCC. Juan Jaramillo" className="w-full h-full object-cover" />
             </motion.div>
-            <h3 className="text-2xl font-bold text-bgmain">MG.CPCC.<br/>Juan Jaramillo</h3>
-            <p className="text-[#E8A5A5] text-sm mt-3 font-bold tracking-widest uppercase">Fundador & CEO</p>
+            <h3 className="text-2xl font-bold text-bgmain mb-1">MG.CPCC.<br/>Juan Jaramillo</h3>
+            <p className="text-[#E8A5A5] text-sm font-bold tracking-widest uppercase mb-6">Fundador & CEO</p>
+
+            <div className="flex gap-3 justify-center relative z-20">
+              <a href="https://www.facebook.com/profile.php?id=100006721081818" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.5)] transition-all duration-300 hover:-translate-y-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href={`https://wa.me/51994715485?text=${predefinedWsMsg}`} target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-[#25D366] hover:border-[#25D366] hover:shadow-[0_0_15px_rgba(37,211,102,0.5)] transition-all duration-300 hover:-translate-y-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              </a>
+            </div>
           </div>
 
           <div className="md:w-2/3 relative z-10">
@@ -263,32 +282,52 @@ const Nosotros = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-10px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-16 mt-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 text-left"
         >
           {team.map((member, idx) => (
             <motion.div 
               key={idx}
               variants={scaleIn}
-              whileHover={{ y: -15 }}
-              className="bg-white rounded-[2rem] p-8 pt-0 shadow-lg border border-gray-100 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:border-cta/30 transition-all duration-500 flex flex-col items-center h-full group"
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:border-cta/30 transition-all duration-300 flex flex-col h-full group"
             >
-              <Avatar name={member.name} image={member.image} />
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-[3px] border-gray-100 group-hover:border-cta transition-colors duration-500">
+                  <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-primary mb-1 group-hover:text-cta transition-colors">{member.name}</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm font-bold uppercase tracking-wider">{member.role}</p>
+                </div>
+              </div>
               
-              <h3 className="text-xl font-bold text-primary mt-8 mb-4 min-h-[56px] flex items-center justify-center group-hover:text-cta transition-colors">
-                {member.name}
-              </h3>
-              
-              <p className="text-body text-sm leading-relaxed mb-8 flex-grow">
+              <p className="text-gray-600 leading-relaxed mb-8 flex-grow text-[15px] sm:text-base">
                 {member.desc}
               </p>
               
-              <a 
-                href={`mailto:${member.email}`} 
-                className="w-full bg-[#F9F8F6] hover:bg-cta text-primary hover:text-bgmain font-bold py-4 px-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 group/btn"
-              >
-                <Mail className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                <span className="text-[11px] truncate">{member.email}</span>
-              </a>
+              <div className="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto w-full">
+                <div className="flex gap-2">
+                  <a href={member.socials.fb} target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_4px_10px_rgba(24,119,242,0.3)] transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                  </a>
+                  <a href={member.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:shadow-[0_4px_10px_rgba(10,102,194,0.3)] transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                      <rect width="4" height="12" x="2" y="9"/>
+                      <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                  </a>
+                  <a href={`https://wa.me/${member.socials.whatsapp}?text=${predefinedWsMsg}`} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#25D366] hover:border-[#25D366] hover:shadow-[0_4px_10px_rgba(37,211,102,0.3)] transition-all duration-300 hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                  </a>
+                </div>
+                <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-gray-400 hover:text-cta transition-colors text-sm font-medium" title={member.email}>
+                  <Mail className="w-5 h-5" />
+                  <span className="hidden sm:inline-block">Email</span>
+                </a>
+              </div>
             </motion.div>
           ))}
         </motion.div>
