@@ -186,12 +186,9 @@ const Servicios = () => {
     <div className="bg-bgmain min-h-screen pb-24">
       {/* Header Section */}
       <section className="bg-primary pt-32 pb-24 px-6 text-center border-b-[6px] border-cta relative overflow-hidden">
-        <motion.div 
-          animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-cta/10 blur-[120px]"
-        />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+        {/* Fondo decorativo estático (animar un blur de 120px colapsa el rendimiento gráfico del navegador) */}
+        <div className="absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-cta/10 blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
@@ -254,8 +251,8 @@ const Servicios = () => {
               onClick={() => setSelectedId(div.id)}
               className={`relative overflow-hidden rounded-3xl cursor-pointer group shadow-lg hover:shadow-2xl hover:ring-4 ring-cta/50 transition-all duration-300 ${searchTerm ? 'md:col-span-2 md:row-span-1' : div.className}`}
             >
-              <div className="absolute inset-0">
-                <img src={div.image} alt={div.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-primary">
+                <img src={div.image} alt={div.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-300 group-hover:opacity-90"></div>
               </div>
               <div className="relative h-full flex flex-col justify-end p-6 md:p-8 z-10 text-white">
@@ -361,12 +358,9 @@ const Servicios = () => {
           transition={{ duration: 0.8 }}
           className="bg-primary rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden shadow-2xl"
         >
-          <motion.div 
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="absolute -top-32 -right-32 w-96 h-96 bg-cta rounded-full blur-[100px]"
-          />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/30 rounded-full blur-3xl"></div>
+          {/* Fondo estático en lugar de animación costosa para GPU */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-cta/30 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
           
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold text-bgmain mb-6 leading-tight">

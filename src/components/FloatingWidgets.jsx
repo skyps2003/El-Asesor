@@ -5,30 +5,7 @@ import { motion } from 'framer-motion';
 const FloatingWidgets = () => {
   return (
     <div className="fixed bottom-6 right-6 flex flex-col gap-5 z-50">
-      {/* Botón de Chatbot Judicial */}
-      <div className="relative">
-        <span className="absolute w-full h-full rounded-full bg-[#007B7A] opacity-40 animate-ping" style={{ animationDuration: '3s' }}></span>
-        <motion.button 
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1, y: [0, -5, 0] }}
-          transition={{ 
-            scale: { duration: 0.3, delay: 0.5, type: "spring" },
-            y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-          }}
-          className="relative w-16 h-16 rounded-full flex items-center justify-center text-white bg-[#007B7A] hover:bg-[#005A59] shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group focus:outline-none focus:ring-4 focus:ring-[#007B7A]/50 z-10"
-          aria-label="Abrir Asistente Legal"
-          onClick={() => {
-            console.log("Chatbot button clicked");
-          }}
-        >
-          <div className="relative">
-            <Bot className="w-8 h-8 transition-transform duration-300 group-hover:scale-110" />
-            <div className="absolute -bottom-1 -right-2 bg-white text-[#007B7A] rounded-full p-[3px] shadow-md transform group-hover:rotate-12 transition-transform duration-300">
-              <Scale className="w-4 h-4" strokeWidth={2.5} />
-            </div>
-          </div>
-        </motion.button>
-      </div>
+
 
       {/* Botón de WhatsApp */}
       <motion.a

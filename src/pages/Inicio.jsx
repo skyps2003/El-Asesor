@@ -326,47 +326,6 @@ const ServicesPreview = () => {
 };
 
 const DownloadBrochure = () => {
-  // states: 'idle', 'loading', 'unavailable'
-  const [status, setStatus] = React.useState('idle');
-
-  const handleClick = () => {
-    if (status !== 'idle') return;
-
-    setStatus('loading');
-
-    // Simulate brief loading sequence
-    setTimeout(() => {
-      setStatus('unavailable');
-      // Revert back to normal
-      setTimeout(() => {
-        setStatus('idle');
-      }, 3500);
-    }, 800);
-  };
-
-  const btnConfig = {
-    idle: {
-      icon: <Download className="w-6 h-6" />,
-      title: "DESCARGAR BROCHURE",
-      sub: "(VERSIÓN PDF)",
-      classes: "bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)]"
-    },
-    loading: {
-      icon: <div className="w-6 h-6 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>,
-      title: "PREPARANDO...",
-      sub: "POR FAVOR ESPERE",
-      classes: "bg-gray-800 text-gray-300 cursor-wait"
-    },
-    unavailable: {
-      icon: <Clock className="w-6 h-6 animate-pulse" />,
-      title: "EN ACTUALIZACIÓN",
-      sub: "(PRÓXIMAMENTE)",
-      classes: "bg-gray-900 text-white border border-cta/30 cursor-not-allowed shadow-none"
-    }
-  };
-
-  const current = btnConfig[status];
-
   return (
     <section className="bg-bgalt py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -394,27 +353,27 @@ const DownloadBrochure = () => {
           </div>
 
           <div className="lg:w-1/3 flex justify-end relative z-10">
-            <motion.button
-              onClick={handleClick}
-              whileHover={status === 'idle' ? { scale: 1.05 } : {}}
-              whileTap={status === 'idle' ? { scale: 0.95 } : {}}
-              animate={status === 'unavailable' ? { x: [-5, 5, -5, 5, 0] } : {}}
-              transition={{ duration: 0.3 }}
-              className={`font-bold py-5 px-8 rounded-2xl shadow-xl flex items-center justify-center gap-4 w-full sm:w-[300px] focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none transition-all duration-300 ${current.classes}`}
+            <motion.a
+              href="/brochure-el-asesor.pdf"
+              download="Brochure-El-Asesor.pdf"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)] font-bold py-5 px-8 rounded-2xl shadow-xl flex items-center justify-center gap-4 w-full sm:w-[300px] focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none transition-all duration-300"
               aria-label="Descargar Brochure PDF"
             >
-              {current.icon}
+              <Download className="w-6 h-6 shrink-0" />
               <div className="text-left flex flex-col justify-center">
-                <span className="leading-tight text-[15px] block">{current.title}</span>
-                <span className="leading-tight text-[11px] opacity-80 tracking-wider mt-0.5 block">{current.sub}</span>
+                <span className="leading-tight text-[15px] block">DESCARGAR BROCHURE</span>
+                <span className="leading-tight text-[11px] opacity-80 tracking-wider mt-0.5 block">(VERSIÓN PDF)</span>
               </div>
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>
     </section>
   );
 };
+
 
 const Inicio = () => {
   return (

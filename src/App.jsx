@@ -9,6 +9,7 @@ import Nosotros from './pages/Nosotros';
 import Contacto from './pages/Contacto';
 import Terminos from './pages/Terminos';
 import Privacidad from './pages/Privacidad';
+import ChatWidget from './components/ChatWidget';
 
 // This component ensures the page scrolls to the top and updates the page title whenever the route changes.
 function RouteObserver() {
@@ -66,6 +67,7 @@ function App() {
             <Route path="privacidad" element={<Privacidad />} />
           </Route>
         </Routes>
+        <ChatWidget />
       </BrowserRouter>
     </LocationProvider>
   );
