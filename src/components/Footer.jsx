@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import logoImg from '../assets/Logo.png';
+import logoIcon from '../assets/loggo.png';
+import logoText from '../assets/letras.png';
 import { LocationContext } from '../context/LocationContext';
 
 const Footer = () => {
@@ -69,10 +70,15 @@ const Footer = () => {
           {/* Column 1: Brand & Description */}
           <motion.div variants={fadeUp} className="lg:col-span-4 flex flex-col">
             <div className="flex items-center gap-4 mb-8 group">
-              <div className="bg-white p-2 rounded-xl shadow-lg transition-all duration-300 group-hover:scale-105">
-                <img src={logoImg} alt="El Asesor Logo" className="h-12 w-auto object-contain" />
+              <div className="bg-white p-2 rounded-xl shadow-lg transition-all duration-300 group-hover:scale-105 flex items-center justify-center z-10">
+                <img src={logoIcon} alt="El Asesor Ícono" className="h-14 md:h-16 w-auto object-contain" />
               </div>
-              <span className="text-3xl font-bold tracking-tight text-white group-hover:text-gray-300 transition-colors duration-300">El Asesor</span>
+              <img 
+                src={logoText} 
+                alt="El Asesor Letras" 
+                className="h-14 md:h-[4.5rem] w-auto object-contain transition-all duration-300 group-hover:opacity-80" 
+                style={{ filter: 'brightness(0) invert(1)' }} 
+              />
             </div>
             <p className="text-gray-400 leading-relaxed text-sm mb-8 pr-4">
               Firma líder multidisciplinaria dedicada a transformar la complejidad legal, contable y pericial en tranquilidad absoluta y crecimiento sostenido para su organización.
@@ -92,10 +98,10 @@ const Footer = () => {
                 <li key={idx}>
                   <NavLink
                     to={link.path}
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors focus:outline-none group text-sm"
+                    className="flex items-center gap-2 text-gray-400 hover:text-cta transition-colors focus:outline-none group text-sm"
                   >
-                    <ChevronRight className="w-4 h-4 text-cta/0 group-hover:text-white transition-all -ml-2 opacity-0 group-hover:opacity-100 group-hover:ml-0" />
-                    <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
+                    <ChevronRight className="w-4 h-4 text-cta/0 group-hover:text-cta transition-all -ml-2 opacity-0 group-hover:opacity-100 group-hover:ml-0" />
+                    <span className="group-hover:translate-x-2 transition-transform">{link.name}</span>
                   </NavLink>
                 </li>
               ))}
@@ -125,26 +131,30 @@ const Footer = () => {
           <motion.div variants={fadeUp} className="lg:col-span-3">
             <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Comuníquese</h4>
             <ul className="space-y-6 mb-8">
-              <li>
-                <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-4 group focus:outline-none hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg">
-                    <Phone className="w-4 h-4 text-white group-hover:text-white transition-colors" />
+              <li className="flex flex-col gap-3">
+                <span className="block text-xs text-gray-500 font-medium uppercase tracking-wider">Llámenos</span>
+                
+                <a href="tel:+51994715485" className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg shrink-0">
+                    <Phone className="w-4 h-4 text-white transition-colors" />
                   </div>
-                  <div>
-                    <span className="block text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">Llámenos</span>
-                    <span className="text-white text-sm font-medium group-hover:text-gray-300 transition-colors">{phone}</span>
+                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">994 715 485</span>
+                </a>
+
+                <a href="tel:+51983620167" className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg shrink-0">
+                    <Phone className="w-4 h-4 text-white transition-colors" />
                   </div>
+                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">983 620 167</span>
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${email}`} className="flex items-center gap-4 group focus:outline-none hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg">
-                    <Mail className="w-4 h-4 text-white group-hover:text-white transition-colors" />
+              <li className="flex flex-col gap-3">
+                <span className="block text-xs text-gray-500 font-medium uppercase tracking-wider">Escríbanos</span>
+                <a href={`mailto:${email}`} className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg shrink-0">
+                    <Mail className="w-4 h-4 text-white transition-colors" />
                   </div>
-                  <div>
-                    <span className="block text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">Escríbanos</span>
-                    <span className="text-white text-sm font-medium group-hover:text-gray-300 transition-colors truncate max-w-[200px] block">{email}</span>
-                  </div>
+                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors truncate max-w-[200px] block">{email}</span>
                 </a>
               </li>
             </ul>

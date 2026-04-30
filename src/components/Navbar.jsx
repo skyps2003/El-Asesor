@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImg from '../assets/Logo.png';
+import logoIcon from '../assets/loggo.png';
+import logoText from '../assets/letras.png';
 
 const staggerNav = {
   hidden: { opacity: 0 },
@@ -38,38 +39,38 @@ const Navbar = () => {
   ];
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 text-primary border-b border-gray-100' 
-          : 'bg-white/90 backdrop-blur-sm py-5 text-primary shadow-sm'
-      }`}
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 text-primary border-b border-gray-100'
+        : 'bg-white/90 backdrop-blur-sm py-5 text-primary shadow-sm'
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <NavLink to="/" className="flex items-center gap-3 group">
-          <motion.img 
-            initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
-            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+        <NavLink to="/" className="flex items-center gap-4 group">
+          <motion.img
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
-            src={logoImg} 
-            alt="El Asesor Logo" 
-            width="120"
-            height="48"
+            src={logoIcon}
+            alt="El Asesor Ícono"
             fetchPriority="high"
-            className="h-12 w-auto transition-transform duration-300 group-hover:scale-110" 
+            className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+            style={{ mixBlendMode: 'multiply' }}
           />
-          <motion.span 
+          <motion.img
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-2xl font-bold tracking-tight group-hover:text-cta transition-colors duration-300"
-          >
-            El Asesor
-          </motion.span>
+            src={logoText}
+            alt="El Asesor Letras"
+            fetchPriority="high"
+            className="h-14 md:h-[4.5rem] w-auto object-contain transition-colors duration-300"
+            style={{ mixBlendMode: 'multiply' }}
+          />
         </NavLink>
 
         {/* Desktop Nav */}
-        <motion.nav 
+        <motion.nav
           variants={staggerNav}
           initial="hidden"
           animate="visible"
@@ -77,11 +78,10 @@ const Navbar = () => {
         >
           {navLinks.map((link) => (
             <motion.div key={link.name} variants={itemNav}>
-              <NavLink 
+              <NavLink
                 to={link.path}
-                className={({ isActive }) => 
-                  `relative px-2 py-1 transition-colors duration-300 hover:text-cta ${
-                    isActive ? 'text-cta font-semibold' : ''
+                className={({ isActive }) =>
+                  `relative px-2 py-1 transition-colors duration-300 hover:text-cta ${isActive ? 'text-cta font-semibold' : ''
                   }`
                 }
               >
@@ -89,9 +89,9 @@ const Navbar = () => {
                   <>
                     {link.name}
                     {isActive && (
-                      <motion.div 
-                        layoutId="underline" 
-                        className="absolute left-0 bottom-0 w-full h-0.5 bg-cta" 
+                      <motion.div
+                        layoutId="underline"
+                        className="absolute left-0 bottom-0 w-full h-0.5 bg-cta"
                       />
                     )}
                   </>
@@ -100,9 +100,9 @@ const Navbar = () => {
             </motion.div>
           ))}
           <motion.div variants={itemNav}>
-            <NavLink 
+            <NavLink
               to="/contacto"
-              className="bg-cta hover:bg-[#7a0101] text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg transition-all hover:shadow-[0_0_15px_rgba(96,1,1,0.4)] hover:-translate-y-0.5 active:scale-95"
+              className="bg-cta hover:bg-[#2E48BA] text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg transition-all hover:shadow-[0_0_15px_rgba(59,89,218,0.4)] hover:-translate-y-0.5 active:scale-95"
             >
               Consulta Rápida
             </NavLink>
@@ -110,7 +110,7 @@ const Navbar = () => {
         </motion.nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden p-2 text-current hover:text-cta transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
@@ -122,7 +122,7 @@ const Navbar = () => {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -135,12 +135,11 @@ const Navbar = () => {
             <div className="flex flex-col px-6 py-4 space-y-4 font-medium">
               {navLinks.map((link) => (
                 <motion.div key={link.name} variants={itemNav}>
-                  <NavLink 
+                  <NavLink
                     to={link.path}
                     onClick={() => setIsMenuOpen(false)}
-                    className={({ isActive }) => 
-                      `block px-4 py-3 rounded-md transition-colors active:scale-95 ${
-                        isActive ? 'bg-bgalt text-cta font-semibold' : 'hover:bg-bgalt'
+                    className={({ isActive }) =>
+                      `block px-4 py-3 rounded-md transition-colors active:scale-95 ${isActive ? 'bg-bgalt text-cta font-semibold' : 'hover:bg-bgalt'
                       }`
                     }
                   >
@@ -149,10 +148,10 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div variants={itemNav} className="pt-4 border-t border-gray-200">
-                <NavLink 
+                <NavLink
                   to="/contacto"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-cta hover:bg-[#7a0101] active:scale-95 text-white font-semibold py-3 rounded-lg transition-transform"
+                  className="block w-full text-center bg-cta hover:bg-[#2E48BA] active:scale-95 text-white font-semibold py-3 rounded-lg transition-transform"
                 >
                   Consulta Rápida
                 </NavLink>

@@ -1,9 +1,10 @@
 @theme {
-  --color-primary: #36454F; /* Gris Carbón Profundo */
-  --color-secondary: #424E55; /* Gris Grafito */
-  --color-cta: #600101; /* Rojo Borgoña */
-  --color-bgmain: #F8F9FA; /* Blanco Off-white */
-  --color-bgalt: #F0F2F4; /* Gris Muy Pálido / Niebla */
-  --color-body: #2A3A42; /* Gris Profundo */
+  --color-primary: #1A1A5A; /* Azul Marino Profundo */
+  --color-secondary: #EBEFF5; /* Gris Bruma Sutil */
+  --color-cta: #3B59DA; /* Azul Cobalto Vibrante */
+  --color-bgmain: #FFFFFF; /* Blanco Nieve */
+  --color-bgalt: #EBEFF5; /* Gris Bruma Sutil */
+  --color-body: #334155; /* Azul Pizarra Oscuro */
+  --color-contrast: #0D0D3F; /* Azul Noche */
   --font-sans: 'Inter', system-ui, sans-serif;
 }

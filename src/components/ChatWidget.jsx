@@ -4,14 +4,14 @@ import { X, Send, Bot, Scale } from 'lucide-react';
 
 // ── Paleta oficial del sitio ──────────────────────────────────────────────────
 const C = {
-  primary:   '#36454F', // Gris Carbón Profundo
-  primaryDk: '#28363D', // hover oscuro
-  cta:       '#600101', // Rojo Borgoña (acento)
-  ctaDk:     '#7a0101', // hover cta
-  bgMain:    '#F8F9FA', // Blanco Off-white (fondo chat)
-  bgAlt:     '#F0F2F4', // Gris Niebla (burbuja bot)
-  body:      '#2A3A42', // Texto principal
-  border:    '#DDE1E5', // Borde sutil
+  primary:   '#1A1A5A', // Azul Marino Profundo
+  primaryDk: '#0D0D3F', // Azul Noche (hover oscuro)
+  cta:       '#3B59DA', // Azul Cobalto Vibrante (acento)
+  ctaDk:     '#2A45B8', // hover cta
+  bgMain:    '#FFFFFF', // Blanco Nieve (fondo chat)
+  bgAlt:     '#EBEFF5', // Gris Bruma Sutil (burbuja bot)
+  body:      '#334155', // Azul Pizarra Oscuro
+  border:    '#E2E8F0', // Borde sutil
 };
 
 // Mensaje de bienvenida idéntico al backend
@@ -70,7 +70,8 @@ export default function ChatWidget() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://el-asesor-back.railway.internal/api/chat', {
+      const apiUrl = import.meta.env?.VITE_API_URL || 'http://localhost:3000/api/chat';
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, mensaje: trimmed })

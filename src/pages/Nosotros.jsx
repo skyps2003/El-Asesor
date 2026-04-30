@@ -235,7 +235,7 @@ const Nosotros = () => {
               <img src={imgJuan} alt="MG.CPCC. Juan Jaramillo" className="w-full h-full object-cover" />
             </motion.div>
             <h3 className="text-2xl font-bold text-bgmain mb-1">MG.CPCC.<br/>Juan Jaramillo</h3>
-            <p className="text-[#E8A5A5] text-sm font-bold tracking-widest uppercase mb-6">Fundador & CEO</p>
+            <p className="text-blue-300 text-sm font-bold tracking-widest uppercase mb-6">Fundador & CEO</p>
 
             <div className="flex gap-3 justify-center relative z-20">
               <a href="https://www.facebook.com/profile.php?id=100006721081818" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.5)] transition-all duration-300 hover:-translate-y-1">

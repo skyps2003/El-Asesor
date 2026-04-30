@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, useInView, animate } from 'framer-motion';
 import {
@@ -127,7 +127,7 @@ const Hero = () => (
         </motion.p>
 
         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-          <NavLink to="/contacto" className="bg-cta hover:bg-[#7a0101] text-white font-semibold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none">
+          <NavLink to="/contacto" className="bg-cta hover:bg-[#2E48BA] text-white font-semibold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(59,89,218,0.3)] hover:shadow-[0_0_30px_rgba(59,89,218,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none">
             Cotizar Servicio <ChevronRight className="w-5 h-5" />
           </NavLink>
           <NavLink to="/nosotros" className="bg-white/5 hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-xl border border-white/20 backdrop-blur-md hover:-translate-y-1 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-white outline-none text-center">
@@ -315,7 +315,7 @@ const ServicesPreview = () => {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <NavLink to="/servicios" className="bg-cta hover:bg-[#7a0101] text-white font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(96,1,1,0.3)] hover:shadow-[0_0_30px_rgba(96,1,1,0.5)] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none group">
+          <NavLink to="/servicios" className="bg-cta hover:bg-[#2E48BA] text-white font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(59,89,218,0.3)] hover:shadow-[0_0_30px_rgba(59,89,218,0.5)] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none group">
             VER TODOS LOS SERVICIOS
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </NavLink>
@@ -326,6 +326,16 @@ const ServicesPreview = () => {
 };
 
 const DownloadBrochure = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = () => {
+    if (isDownloading) return;
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 3000);
+  };
+
   return (
     <section className="bg-bgalt py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -356,15 +366,26 @@ const DownloadBrochure = () => {
             <motion.a
               href="/brochure-el-asesor.pdf"
               download="Brochure-El-Asesor.pdf"
+              onClick={handleDownload}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-cta hover:bg-[#7a0101] text-white hover:shadow-[0_0_20px_rgba(96,1,1,0.4)] font-bold py-5 px-8 rounded-2xl shadow-xl flex items-center justify-center gap-4 w-full sm:w-[300px] focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none transition-all duration-300"
+              className={`${isDownloading ? 'bg-[#10B981] shadow-[0_0_30px_rgba(16,185,129,0.5)]' : 'bg-cta hover:bg-[#2E48BA] hover:shadow-[0_0_20px_rgba(59,89,218,0.4)]'} text-white font-bold py-5 px-8 rounded-2xl shadow-xl flex items-center justify-center gap-4 w-full sm:w-[300px] focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none transition-all duration-300`}
               aria-label="Descargar Brochure PDF"
             >
-              <Download className="w-6 h-6 shrink-0" />
+              {isDownloading ? (
+                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring" }}>
+                  <CheckCircle2 className="w-7 h-7 shrink-0 text-white drop-shadow-md" />
+                </motion.div>
+              ) : (
+                <Download className="w-6 h-6 shrink-0" />
+              )}
               <div className="text-left flex flex-col justify-center">
-                <span className="leading-tight text-[15px] block">DESCARGAR BROCHURE</span>
-                <span className="leading-tight text-[11px] opacity-80 tracking-wider mt-0.5 block">(VERSIÓN PDF)</span>
+                <span className="leading-tight text-[15px] block transition-all duration-300">
+                  {isDownloading ? '¡DESCARGA INICIADA!' : 'DESCARGAR BROCHURE'}
+                </span>
+                <span className="leading-tight text-[11px] opacity-80 tracking-wider mt-0.5 block transition-all duration-300">
+                  {isDownloading ? 'GRACIAS POR SU INTERÉS' : '(VERSIÓN PDF)'}
+                </span>
               </div>
             </motion.a>
           </div>

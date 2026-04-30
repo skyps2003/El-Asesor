@@ -372,7 +372,7 @@ const Servicios = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <NavLink 
                 to="/contacto" 
-                className="inline-flex items-center gap-2 bg-cta hover:bg-[#7a0101] text-bgmain font-bold py-5 px-10 rounded-2xl shadow-xl hover:shadow-[0_0_25px_rgba(96,1,1,0.4)] transition-all duration-300 focus:ring-4 focus:ring-cta/50 outline-none"
+                className="inline-flex items-center gap-2 bg-cta hover:bg-[#2E48BA] text-bgmain font-bold py-5 px-10 rounded-2xl shadow-xl hover:shadow-[0_0_25px_rgba(59,89,218,0.4)] transition-all duration-300 focus:ring-4 focus:ring-cta/50 outline-none"
               >
                 SOLICITAR ASESORÍA <ChevronRight className="w-6 h-6" />
               </NavLink>
