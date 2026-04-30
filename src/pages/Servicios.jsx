@@ -239,7 +239,7 @@ const Servicios = () => {
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true, margin: "-10px" }}
           className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[320px] grid-flow-dense"
         >
@@ -353,7 +353,7 @@ const Servicios = () => {
       <section className="container mx-auto px-6 mt-32 max-w-5xl text-center">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="bg-primary rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden shadow-2xl"
