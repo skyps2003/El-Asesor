@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Scale } from 'lucide-react';
+
 import { motion } from 'framer-motion';
 
 const FloatingWidgets = () => {

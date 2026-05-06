@@ -38,10 +38,10 @@ const Contacto = () => {
     return () => observer.disconnect();
   }, [selectedLocation.id]);
 
-  const facebookUrl = import.meta.env.VITE_FACEBOOK || '#';
-  const instagramUrl = import.meta.env.VITE_INSTAGRAM || '#';
-  const tiktokUrl = import.meta.env.VITE_TIKTOK || '#';
-  const youtubeUrl = import.meta.env.VITE_YOUTUBE || '#';
+  const facebookUrl = import.meta.env.VITE_FACEBOOK || 'https://www.facebook.com/profile.php?id=61589281921493';
+  const instagramUrl = import.meta.env.VITE_INSTAGRAM || 'https://www.instagram.com/estudioelasesor/';
+  const tiktokUrl = import.meta.env.VITE_TIKTOK || 'https://www.tiktok.com/@estudio_elasesor';
+  const youtubeUrl = import.meta.env.VITE_YOUTUBE || 'https://www.youtube.com/@estudioelasesor';
 
   const emails = [
     "info@estudioelasesor.com",
