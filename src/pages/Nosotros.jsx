@@ -11,6 +11,7 @@ import imgAndre from '../assets/team/andre.png';
 import imgVictor from '../assets/team/victor.png';
 import imgNuevo from '../assets/team/nuevo.jpeg';
 
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -98,6 +99,15 @@ const Nosotros = () => {
       desc: " Abogado colegiado con registro Nro 2290 del colegio de abogados de Apurímac especialista, en derecho penal y minero.",
       email: "reclutamiento@estudioelasesor.com",
       image: imgNuevo,
+      socials: { fb: '#', linkedin: '#', whatsapp: '51999999995' }
+    }
+    ,
+    {
+      name: "Jhon Jaramillo A",
+      role: "Administrador",
+      desc: "Administrador con amplia experiencia en gestión empresarial.",
+      email: "",
+      image: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
       socials: { fb: '#', linkedin: '#', whatsapp: '51999999995' }
     }
   ];
