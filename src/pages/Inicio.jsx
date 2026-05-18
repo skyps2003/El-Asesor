@@ -364,8 +364,8 @@ const DownloadBrochure = () => {
 
           <div className="lg:w-1/3 flex justify-end relative z-10">
             <motion.a
-              href="/brochure-el-asesor.pdf"
-              download="Brochure-El-Asesor.pdf"
+              href="/Brochure 2026.pdf"
+              download="Brochure 2026.pdf"
               onClick={handleDownload}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
