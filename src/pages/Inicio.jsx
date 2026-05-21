@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { motion, useInView, animate } from 'framer-motion';
+import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import {
   Scale,
   ShieldCheck,
@@ -15,7 +15,8 @@ import {
   Users,
   CheckCircle2,
   Award,
-  FileText
+  FileText,
+  X
 } from 'lucide-react';
 
 import img1 from '../assets/inicio/01-asesoria.jpg';
@@ -325,19 +326,72 @@ const ServicesPreview = () => {
   );
 };
 
+// --- Simple and elegant glassmorphic Toast notification ---
+const DownloadToast = ({ show, onClose }) => {
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          initial={{ opacity: 0, x: -50, scale: 0.95 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          exit={{ opacity: 0, x: -20, scale: 0.95, transition: { duration: 0.2 } }}
+          transition={{ type: "spring", stiffness: 350, damping: 25 }}
+          className="fixed bottom-6 left-6 z-[99999] flex items-center gap-3.5 px-5 py-4 rounded-2xl bg-[#1A1A5A]/95 border border-white/10 backdrop-blur-md text-white shadow-[0_15px_35px_rgba(0,0,0,0.25)] max-w-sm"
+        >
+          {/* Glowing checkmark bubble */}
+          <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <CheckCircle2 className="w-5 h-5" />
+          </div>
+          
+          <div className="flex-1 text-left min-w-[180px]">
+            <p className="text-sm font-extrabold tracking-wide leading-none">¡Descarga Iniciada!</p>
+            <p className="text-xs text-slate-300 font-medium leading-normal mt-1">
+              El brochure se está guardando en su dispositivo.
+            </p>
+          </div>
+
+          {/* Subtle close button */}
+          <button 
+            onClick={onClose} 
+            className="text-white/40 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full shrink-0 outline-none"
+            aria-label="Cerrar notificación"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const DownloadBrochure = () => {
   const [isDownloading, setIsDownloading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleDownload = () => {
     if (isDownloading) return;
     setIsDownloading(true);
+    setShowToast(true);
+
+    // Auto-dismiss the toast after 4.5 seconds
+    setTimeout(() => {
+      setShowToast(false);
+    }, 4500);
+
+    // Reset download button active state
     setTimeout(() => {
       setIsDownloading(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
     <section className="bg-bgalt py-24 relative overflow-hidden">
+      {/* Toast notification at the bottom left */}
+      <DownloadToast 
+        show={showToast} 
+        onClose={() => setShowToast(false)} 
+      />
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -364,8 +418,8 @@ const DownloadBrochure = () => {
 
           <div className="lg:w-1/3 flex justify-end relative z-10">
             <motion.a
-              href="/Brochure 2026.pdf"
-              download="Brochure 2026.pdf"
+              href="/Brochure 2026 .pdf"
+              download="Brochure 2026 .pdf"
               onClick={handleDownload}
               whileHover={{ 
                 scale: 1.05, 
