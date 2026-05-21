@@ -367,9 +367,17 @@ const DownloadBrochure = () => {
               href="/Brochure 2026.pdf"
               download="Brochure 2026.pdf"
               onClick={handleDownload}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`${isDownloading ? 'bg-[#10B981] shadow-[0_0_30px_rgba(16,185,129,0.5)]' : 'bg-cta hover:bg-[#2E48BA] hover:shadow-[0_0_20px_rgba(59,89,218,0.4)]'} text-white font-bold py-5 px-8 rounded-2xl shadow-xl flex items-center justify-center gap-4 w-full sm:w-[300px] focus:ring-2 focus:ring-offset-2 focus:ring-cta outline-none transition-all duration-300`}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 0 35px rgba(59, 89, 218, 0.7)",
+                borderColor: "rgba(255, 255, 255, 0.5)"
+              }}
+              whileTap={{ scale: 0.97 }}
+              className={`${
+                isDownloading 
+                  ? 'bg-[#10B981] border-[#10B981] shadow-[0_0_30px_rgba(16,185,129,0.6)]' 
+                  : 'bg-gradient-to-r from-[#1A1A5A] via-[#3B59DA] to-[#1A1A5A] bg-[length:200%_auto] hover:bg-right border-white/20 animate-shimmer'
+              } text-white font-bold py-5 px-8 rounded-2xl border shadow-xl flex items-center justify-center gap-4 w-full sm:w-[320px] focus:ring-2 focus:ring-offset-2 focus:ring-[#3B59DA] outline-none transition-all duration-500`}
               aria-label="Descargar Brochure PDF"
             >
               {isDownloading ? (
@@ -377,14 +385,20 @@ const DownloadBrochure = () => {
                   <CheckCircle2 className="w-7 h-7 shrink-0 text-white drop-shadow-md" />
                 </motion.div>
               ) : (
-                <Download className="w-6 h-6 shrink-0" />
+                <motion.div
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+                  className="flex-shrink-0"
+                >
+                  <Download className="w-6 h-6 shrink-0" />
+                </motion.div>
               )}
               <div className="text-left flex flex-col justify-center">
-                <span className="leading-tight text-[15px] block transition-all duration-300">
+                <span className="leading-tight text-[15px] block font-extrabold tracking-wider transition-all duration-300">
                   {isDownloading ? '¡DESCARGA INICIADA!' : 'DESCARGAR BROCHURE'}
                 </span>
-                <span className="leading-tight text-[11px] opacity-80 tracking-wider mt-0.5 block transition-all duration-300">
-                  {isDownloading ? 'GRACIAS POR SU INTERÉS' : '(VERSIÓN PDF)'}
+                <span className="leading-tight text-[11px] font-medium opacity-80 tracking-widest mt-0.5 block transition-all duration-300">
+                  {isDownloading ? 'GRACIAS POR SU INTERÉS' : 'PRESENTACIÓN CORPORATIVA'}
                 </span>
               </div>
             </motion.a>

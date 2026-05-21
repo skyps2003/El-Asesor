@@ -44,10 +44,8 @@ const Contacto = () => {
   const youtubeUrl = import.meta.env.VITE_YOUTUBE || 'https://www.youtube.com/@estudioelasesor';
 
   const emails = [
-    "info@estudioelasesor.com",
     "cpccjaramillo2012@gmail.com",
-    "cpccjaramillo12@outlook.com",
-    "juan.jaramillo@estudioelasesor.com"
+    "cpccjaramillo12@outlook.com"
   ];
 
   const handleSubmit = (e) => {
@@ -262,7 +260,7 @@ const Contacto = () => {
 
                 <motion.div whileFocus={{ scale: 1.01 }} className="transition-transform">
                   <label htmlFor="email" className="block text-sm font-bold text-primary mb-2">Correo Electrónico <span className="text-cta">*</span></label>
-                  <input type="email" id="email" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cta focus:border-cta outline-none transition-all bg-bgmain/50 focus:bg-white focus:shadow-[0_0_15px_rgba(212,175,55,0.1)]" placeholder="correo@estudioelasesor.com" />
+                  <input type="email" id="email" required className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cta focus:border-cta outline-none transition-all bg-bgmain/50 focus:bg-white focus:shadow-[0_0_15px_rgba(212,175,55,0.1)]" placeholder="correo@gmail.com" />
                 </motion.div>
 
                 <motion.div whileFocus={{ scale: 1.01 }} className="transition-transform">
