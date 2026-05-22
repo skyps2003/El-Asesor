@@ -54,7 +54,7 @@ const Navbar = () => {
             src={logoIcon}
             alt="El Asesor Ícono"
             fetchPriority="high"
-            className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+            className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
             style={{ mixBlendMode: 'multiply' }}
           />
           <motion.img
@@ -64,7 +64,7 @@ const Navbar = () => {
             src={logoText}
             alt="El Asesor Letras"
             fetchPriority="high"
-            className="h-14 md:h-[4.5rem] w-auto object-contain transition-colors duration-300"
+            className="h-10 md:h-[3.5rem] w-auto object-contain transition-colors duration-300"
             style={{ mixBlendMode: 'multiply' }}
           />
         </NavLink>

@@ -111,15 +111,18 @@ const Footer = () => {
           {/* Column 3: Sede Central (Location) */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
             <h4 className="text-sm font-bold text-white tracking-widest uppercase mb-8">Sede Principal - {sedePrincipal.city}</h4>
-            <div className="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group relative overflow-hidden flex flex-col items-center justify-center text-center">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-cta/10 rounded-full blur-xl group-hover:bg-cta/20 transition-all duration-500"></div>
-              <MapPin className="w-10 h-10 text-cta mb-4 group-hover:scale-110 transition-transform duration-500" />
-              <p className="text-gray-300 text-sm mb-4 font-medium">
-                Encuentra esta y todas nuestras sedes en el mapa interactivo.
-              </p>
-              <NavLink to="/contacto" className="inline-flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider bg-cta/80 hover:bg-cta px-4 py-2 rounded-xl transition-colors shadow-lg">
-                Ver Mapa <ChevronRight className="w-4 h-4" />
-              </NavLink>
+            <div className="bg-white/5 rounded-2xl border border-white/10 hover:border-cta/50 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] group relative overflow-hidden flex flex-col items-center justify-center text-center h-48 mt-4">
+              <iframe 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`Mapa Sede ${sedePrincipal.city}`}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+                src={sedePrincipal.mapSrc}
+                className="absolute inset-0 z-10 grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
+              ></iframe>
             </div>
             <div className="mt-4 flex items-start gap-3 text-gray-400 text-sm">
               <MapPin className="w-4 h-4 text-cta shrink-0 mt-0.5" />
@@ -141,11 +144,18 @@ const Footer = () => {
                   <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">994 715 485</span>
                 </a>
 
-                <a href="tel:+51983620167" className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
+                <a href="tel:+51954693867" className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg shrink-0">
                     <Phone className="w-4 h-4 text-white transition-colors" />
                   </div>
-                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">983 620 167</span>
+                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">954 693 867</span>
+                </a>
+
+                <a href="tel:+51950792050" className="flex items-center gap-4 group focus:outline-none hover:translate-x-2 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-colors shadow-lg shrink-0">
+                    <Phone className="w-4 h-4 text-white transition-colors" />
+                  </div>
+                  <span className="text-white text-sm font-medium group-hover:text-cta transition-colors">950 792 050</span>
                 </a>
               </li>
               <li className="flex flex-col gap-3">

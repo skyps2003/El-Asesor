@@ -44,8 +44,9 @@ const Contacto = () => {
   const youtubeUrl = import.meta.env.VITE_YOUTUBE || 'https://www.youtube.com/@estudioelasesor';
 
   const emails = [
-    "cpccjaramillo2012@gmail.com",
-    "cpccjaramillo12@outlook.com"
+    { address: "cpccjaramillo2012@gmail.com" },
+    { address: "cpccjaramillo12@outlook.com" },
+    { address: "info@corporacionjjja.com" }
   ];
 
   const handleSubmit = (e) => {
@@ -125,10 +126,13 @@ const Contacto = () => {
               <div className="w-full">
                 <h3 className="text-xl font-bold text-primary mb-3">Canales Digitales</h3>
                 <div className="space-y-3">
-                  {emails.map((email, i) => (
-                    <a key={i} href={`mailto:${email}`} className="block text-body hover:text-cta transition-colors text-sm font-medium">
-                      {email}
-                    </a>
+                  {emails.map((item, i) => (
+                    <div key={i} className="mb-2">
+                      {item.name && <span className="block text-xs text-primary font-bold">{item.name}</span>}
+                      <a href={`mailto:${item.address}`} className="block text-body hover:text-cta transition-colors text-sm font-medium">
+                        {item.address}
+                      </a>
+                    </div>
                   ))}
                 </div>
               </div>
